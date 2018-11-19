@@ -94,7 +94,8 @@ scall_t miniSO_scall_table[miniSO_NUMSCALL] = {
 	{ SC_SEMSET,		2, (scfun0_t)sc_semset		},
 	{ SC_SEMUP,		1, (scfun0_t)sc_semup		},
 	{ SC_SEMDOWN,		1, (scfun0_t)sc_semdown		},
-	{ SC_SEMDESTROY,	1, (scfun0_t)sc_semdestroy	}
+	{ SC_SEMDESTROY,	1, (scfun0_t)sc_semdestroy	},
+	{ SC_SEMBROADCAST,	1, (scfun0_t)sc_sembroadcast },
 };
 
 
@@ -1007,3 +1008,33 @@ int sc_semdestroy (semid_t s)
 	return miniSO_OK;
 }
 
+int sc_sembroadcast (semid_t s)
+{
+	int sem;
+	int contador;
+	pcb_t pcb,last,prevthread,nextthread;
+
+	disable();
+	sem = get_sem_pos(s);
+	if	(sem==miniSO_ERROR) {
+		enable();
+		return miniSO_ERROR;
+	}
+	for(contador = 1; contador <= 4; contador++) {
+		miniSO_sem[sem].value++;
+		if	(miniSO_sem[sem].queue!=-1) {
+			pcb = miniSO_sem[sem].queue;
+			miniSO_sem[sem].queue = miniSO_thread[pcb].next;
+			if	(miniSO_sem[sem].queue!=-1)
+				miniSO_thread[miniSO_sem[sem].queue].prev = -1;
+			last = miniSO_thread[miniSO_ready].prev;
+			miniSO_thread[pcb].prev = last;
+			miniSO_thread[last].next=pcb;
+			miniSO_thread[miniSO_ready].prev=pcb;
+			miniSO_thread[pcb].next=miniSO_ready;
+			miniSO_thread[pcb].status = READY;
+		}
+	}
+	enable();
+	return miniSO_OK;
+}

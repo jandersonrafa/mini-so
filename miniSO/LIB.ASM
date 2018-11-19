@@ -14,10 +14,10 @@ $comm	macro	name,dist,size,count
 	endif
 	?debug	V 300h
 	?debug	S "lib.c"
-	?debug	C E925548441056C69622E63
+	?debug	C E90BA5734D056C69622E63
 	?debug	C E9EE217847086D696E69534F2E68
-	?debug	C E925548441056C69622E68
-	?debug	C E925548441077363616C6C2E68
+	?debug	C E969A4734D056C69622E68
+	?debug	C E9B0A5734D077363616C6C2E68
 _TEXT	segment byte public 'CODE'
 _TEXT	ends
 DGROUP	group	_DATA,_BSS
@@ -2322,6 +2322,39 @@ _semdestroy	proc	near
 	pop	bp
 	ret	
 _semdestroy	endp
+   ;	
+   ;	int sembroadcast (semid_t s)
+   ;	
+	assume	cs:_TEXT
+_sembroadcast	proc	near
+	push	bp
+	mov	bp,sp
+   ;	
+   ;	{
+   ;		_BX = s;
+   ;	
+	mov	bx,word ptr [bp+4]
+   ;	
+   ;		asm	{
+   ;			mov  ah,SC_SEMBROADCAST
+   ;	
+	mov	  ah,25
+   ;	
+   ;			int  22h
+   ;	
+	int	  22h
+   ;	
+   ;		}
+   ;		return _AX;
+   ;	
+	jmp	short @41@142
+@41@142:
+   ;	
+   ;	}
+   ;	
+	pop	bp
+	ret	
+_sembroadcast	endp
 	?debug	C E9
 	?debug	C FA00000000
 _TEXT	ends
@@ -2334,6 +2367,7 @@ _TEXT	ends
 	extrn	N_LUDIV@:far
 	extrn	N_LXMUL@:far
 	public	_isalpha
+	public	_sembroadcast
 	public	_semdestroy
 	public	_semdown
 	public	_semup

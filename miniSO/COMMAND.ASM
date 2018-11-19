@@ -14,10 +14,10 @@ $comm	macro	name,dist,size,count
 	endif
 	?debug	V 300h
 	?debug	S "command.c"
-	?debug	C E996987E4709636F6D6D616E642E63
+	?debug	C E9CFA4734D09636F6D6D616E642E63
 	?debug	C E9EE217847086D696E69534F2E68
-	?debug	C E99C987E4709636F6D6D616E642E68
-	?debug	C E925548441056C69622E68
+	?debug	C E9D39D734D09636F6D6D616E642E68
+	?debug	C E969A4734D056C69622E68
 _TEXT	segment byte public 'CODE'
 _TEXT	ends
 DGROUP	group	_DATA,_BSS
@@ -104,6 +104,12 @@ commands	label	word
 	dw	DGROUP:s@+1010
 	dw	DGROUP:s@+1021
 	dw	_cmd_semdestroy
+	dw	DGROUP:s@+1051
+	dw	DGROUP:s@+1058
+	dw	_cmd_create
+	dw	DGROUP:s@+1083
+	dw	DGROUP:s@+1089
+	dw	_cmd_start
 _DATA	ends
 _TEXT	segment byte public 'CODE'
    ;	
@@ -167,7 +173,7 @@ _command	proc	near
    ;	  putstr("                  ÜÜÜÜÜÜÜ  ÜÜÜÜÜÜ\n");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+1051
+	mov	ax,offset DGROUP:s@+1131
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -176,7 +182,7 @@ _command	proc	near
    ;	  putstr(" ÜÜÜÜÜ  Ü  ÜÜÜ  Ü ÛÛ   ßß  ÛÛ  ÛÛ  "); setcolor(7); putstr("MinisSistema Operacional\n"); setcolor(LOGOCOLOR);
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+1086
+	mov	ax,offset DGROUP:s@+1166
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -186,7 +192,7 @@ _command	proc	near
 	call	near ptr _setcolor
 	pop	cx
 	push	ds
-	mov	ax,offset DGROUP:s@+1122
+	mov	ax,offset DGROUP:s@+1202
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -199,7 +205,7 @@ _command	proc	near
    ;	  putstr("ÜÛ Û Û ÜÛ ÜÛ Û ÜÛ ßßßßÛÛÛ ÛÛÛ  ÛÛ  "); setcolor(7); putstr("Vs "); putstr(miniSO_VERSION); putstr("\n"); setcolor(LOGO
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+1148
+	mov	ax,offset DGROUP:s@+1228
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -209,19 +215,19 @@ _command	proc	near
 	call	near ptr _setcolor
 	pop	cx
 	push	ds
-	mov	ax,offset DGROUP:s@+1184
+	mov	ax,offset DGROUP:s@+1264
 	push	ax
 	call	near ptr _putstr
 	pop	cx
 	pop	cx
 	push	ds
-	mov	ax,offset DGROUP:s@+1188
+	mov	ax,offset DGROUP:s@+1268
 	push	ax
 	call	near ptr _putstr
 	pop	cx
 	pop	cx
 	push	ds
-	mov	ax,offset DGROUP:s@+1193
+	mov	ax,offset DGROUP:s@+1273
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -234,7 +240,7 @@ _command	proc	near
    ;	  putstr("ÛÛ Û Û ÛÛ ÛÛ Û ÛÛ ÛÛÜÜÛÛÛ ÛÛÛÜÜÛÛ  "); setcolor(7); putstr("por Roland Teodorowitsch\n");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+1195
+	mov	ax,offset DGROUP:s@+1275
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -244,7 +250,7 @@ _command	proc	near
 	call	near ptr _setcolor
 	pop	cx
 	push	ds
-	mov	ax,offset DGROUP:s@+1231
+	mov	ax,offset DGROUP:s@+1311
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -254,7 +260,7 @@ _command	proc	near
    ;	  putstr("\nDigite 'help' ou '?' para ajuda...\n\n");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+1257
+	mov	ax,offset DGROUP:s@+1337
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -268,10 +274,10 @@ _command	proc	near
    ;	  command_var_set("PROMPT","miniSO>");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+1302
+	mov	ax,offset DGROUP:s@+1382
 	push	ax
 	push	ds
-	mov	ax,offset DGROUP:s@+1295
+	mov	ax,offset DGROUP:s@+1375
 	push	ax
 	call	near ptr command_var_set
 	add	sp,8
@@ -279,10 +285,10 @@ _command	proc	near
    ;	  command_var_set("ERRORLEVEL","0");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+1321
+	mov	ax,offset DGROUP:s@+1401
 	push	ax
 	push	ds
-	mov	ax,offset DGROUP:s@+1310
+	mov	ax,offset DGROUP:s@+1390
 	push	ax
 	call	near ptr command_var_set
 	add	sp,8
@@ -1131,7 +1137,7 @@ _command	proc	near
 @1@3082:
 	inc	di
 @1@3110:
-	cmp	di,23
+	cmp	di,25
 	jl	short @1@3026
 @1@3138:
    ;	
@@ -1173,7 +1179,7 @@ _command	proc	near
 	lea	ax,word ptr [bp-12]
 	push	ax
 	push	ds
-	mov	ax,offset DGROUP:s@+1323
+	mov	ax,offset DGROUP:s@+1403
 	push	ax
 	call	near ptr command_var_set
 	add	sp,8
@@ -1187,7 +1193,7 @@ _command	proc	near
    ;	                       putstr("Erro: comando desconhecido!\n");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+1334
+	mov	ax,offset DGROUP:s@+1414
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -1354,7 +1360,7 @@ command_showprompt	proc	near
    ;	  prompt = command_var_value("PROMPT");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+1363
+	mov	ax,offset DGROUP:s@+1443
 	push	ax
 	call	near ptr command_var_value
 	pop	cx
@@ -2006,7 +2012,7 @@ _cmd_help	proc	near
    ;	  putstr("Comandos do minisSistema Operacional:\n");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+1370
+	mov	ax,offset DGROUP:s@+1450
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -2050,7 +2056,7 @@ _cmd_help	proc	near
 	pop	cx
 	inc	si
 @13@114:
-	cmp	si,23
+	cmp	si,25
 	jl	short @13@58
    ;	
    ;	  }
@@ -2406,7 +2412,7 @@ _cmd_ver	proc	near
    ;	  putstr("minisSistema Operacional - Vs ");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+1409
+	mov	ax,offset DGROUP:s@+1489
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -2415,7 +2421,7 @@ _cmd_ver	proc	near
    ;	  putstr(miniSO_VERSION);
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+1440
+	mov	ax,offset DGROUP:s@+1520
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -2474,7 +2480,7 @@ _cmd_ps	proc	near
    ;	  putstr(" BCP   PID   PPID  STATUS   WAIT   ZLIST  PREV   NEXT\n");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+1445
+	mov	ax,offset DGROUP:s@+1525
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -2543,7 +2549,7 @@ _cmd_ps	proc	near
    ;	         putstr("  ");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+1500
+	mov	ax,offset DGROUP:s@+1580
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -2599,7 +2605,7 @@ _cmd_ps	proc	near
    ;	         putstr("  ");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+1503
+	mov	ax,offset DGROUP:s@+1583
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -2655,7 +2661,7 @@ _cmd_ps	proc	near
    ;	         putstr("  ");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+1506
+	mov	ax,offset DGROUP:s@+1586
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -2678,7 +2684,7 @@ _cmd_ps	proc	near
    ;	               case FREE:    putstr(strFREE);    break;
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+1509
+	mov	ax,offset DGROUP:s@+1589
 @18@478:
 	push	ax
 	call	near ptr _putstr
@@ -2690,42 +2696,42 @@ _cmd_ps	proc	near
    ;	               case READY:   putstr(strREADY);   break;
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+1517
+	mov	ax,offset DGROUP:s@+1597
 	jmp	short @18@478
 @18@534:
    ;	
    ;	               case RUNNING: putstr(strRUNNING); break;
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+1525
+	mov	ax,offset DGROUP:s@+1605
 	jmp	short @18@478
 @18@562:
    ;	
    ;	               case ZOMBIE:  putstr(strZOMBIE);  break;
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+1533
+	mov	ax,offset DGROUP:s@+1613
 	jmp	short @18@478
 @18@590:
    ;	
    ;	               case WAIT:    putstr(strWAIT);    break;
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+1541
+	mov	ax,offset DGROUP:s@+1621
 	jmp	short @18@478
 @18@618:
    ;	
    ;	               case WAITSIG: putstr(strWAITSIG); break;
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+1549
+	mov	ax,offset DGROUP:s@+1629
 	jmp	short @18@478
 @18@646:
    ;	
    ;	               case WAITSEM: putstr(strWAITSEM); break;
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+1557
+	mov	ax,offset DGROUP:s@+1637
 	jmp	short @18@478
 @18@674:
    ;	
@@ -2733,7 +2739,7 @@ _cmd_ps	proc	near
    ;	         putstr("  ");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+1565
+	mov	ax,offset DGROUP:s@+1645
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -2790,7 +2796,7 @@ _cmd_ps	proc	near
    ;	         putstr("  ");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+1568
+	mov	ax,offset DGROUP:s@+1648
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -2847,7 +2853,7 @@ _cmd_ps	proc	near
    ;	         putstr(" ");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+1571
+	mov	ax,offset DGROUP:s@+1651
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -2904,7 +2910,7 @@ _cmd_ps	proc	near
    ;	         putstr("  ");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+1573
+	mov	ax,offset DGROUP:s@+1653
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -3023,7 +3029,7 @@ _cmd_kill	proc	near
    ;	     putstr("Erro em kill: parametro nao fornecido!\n");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+1576
+	mov	ax,offset DGROUP:s@+1656
 @19@86:
 	push	ax
 	call	near ptr _putstr
@@ -3063,7 +3069,7 @@ _cmd_kill	proc	near
    ;	     putstr("kill: impossivel matar o processo/thread\n");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+1616
+	mov	ax,offset DGROUP:s@+1696
 	jmp	short @19@86
 @19@198:
    ;	
@@ -3124,7 +3130,7 @@ _cmd_set	proc	near
    ;	     res = command_var_set(argv[1],"");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+1658
+	mov	ax,offset DGROUP:s@+1738
 	push	ax
 	push	word ptr [di+6]
 	push	word ptr [di+4]
@@ -3171,7 +3177,7 @@ _cmd_set	proc	near
    ;	              putstr("Erro em set: nao ha espaco para novas variaveis!\n");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+1659
+	mov	ax,offset DGROUP:s@+1739
 	jmp	short @20@478
 @20@394:
    ;	
@@ -3180,7 +3186,7 @@ _cmd_set	proc	near
    ;	              putstr("Erro em set: o tamanho do nome da variavel e muito grande!\n");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+1709
+	mov	ax,offset DGROUP:s@+1789
 	jmp	short @20@478
 @20@422:
    ;	
@@ -3189,7 +3195,7 @@ _cmd_set	proc	near
    ;	              putstr("Erro em set: o tamanho do conteudo da variavel e muito grande!\n");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+1769
+	mov	ax,offset DGROUP:s@+1849
 	jmp	short @20@478
 @20@450:
    ;	
@@ -3198,7 +3204,7 @@ _cmd_set	proc	near
    ;	              putstr("Erro em set: argumentos demais na linha de comando!\n");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+1833
+	mov	ax,offset DGROUP:s@+1913
 @20@478:
 	push	ax
 	call	near ptr _putstr
@@ -3248,7 +3254,7 @@ _cmd_unset	proc	near
    ;	     putstr("Erro em unset: numero invalido de argumentos!\n");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+1886
+	mov	ax,offset DGROUP:s@+1966
 @21@86:
 	push	ax
 	call	near ptr _putstr
@@ -3281,7 +3287,7 @@ _cmd_unset	proc	near
    ;	     putstr("Erro em unset: variavel inexistente!\n");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+1933
+	mov	ax,offset DGROUP:s@+2013
 	jmp	short @21@86
 @21@198:
    ;	
@@ -3325,7 +3331,7 @@ _cmd_echo	proc	near
    ;	     if (strcmp(argv[1],"-n")==0)
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+1971
+	mov	ax,offset DGROUP:s@+2051
 	push	ax
 	push	word ptr [di+6]
 	push	word ptr [di+4]
@@ -3456,7 +3462,7 @@ demo	proc	near
    ;	  putstrxy(65,ini+0,"ÚÄÄ Thread ÄÄÄÄ¿");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+1974
+	mov	ax,offset DGROUP:s@+2054
 	push	ax
 	push	di
 	mov	ax,65
@@ -3467,7 +3473,7 @@ demo	proc	near
    ;	  putstrxy(65,ini+1,"³ PID  =       ³");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+1991
+	mov	ax,offset DGROUP:s@+2071
 	push	ax
 	mov	ax,di
 	inc	ax
@@ -3480,7 +3486,7 @@ demo	proc	near
    ;	  putstrxy(65,ini+2,"³ Execucao:    ³");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+2008
+	mov	ax,offset DGROUP:s@+2088
 	push	ax
 	mov	ax,di
 	add	ax,2
@@ -3493,7 +3499,7 @@ demo	proc	near
    ;	  putstrxy(65,ini+3,"³              ³");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+2025
+	mov	ax,offset DGROUP:s@+2105
 	push	ax
 	mov	ax,di
 	add	ax,3
@@ -3506,7 +3512,7 @@ demo	proc	near
    ;	  putstrxy(65,ini+4,"ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+2042
+	mov	ax,offset DGROUP:s@+2122
 	push	ax
 	mov	ax,di
 	add	ax,4
@@ -3796,7 +3802,7 @@ _cmd_demo	proc	near
    ;			putstr("Erro em demo: numero invalido de argumentos!\n");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+2059
+	mov	ax,offset DGROUP:s@+2139
 @24@86:
 	push	ax
 	call	near ptr _putstr
@@ -3847,7 +3853,7 @@ _cmd_demo	proc	near
    ;			putstr("Erro em demo: fork() nao conseguiu criar thread!\n");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+2105
+	mov	ax,offset DGROUP:s@+2185
 	jmp	short @24@86
 @24@254:
    ;	
@@ -3887,7 +3893,7 @@ _cmd_waitpid	proc	near
    ;			putstr("Erro em waitpid: numero invalido de argumentos!\n");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+2155
+	mov	ax,offset DGROUP:s@+2235
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -3924,7 +3930,7 @@ _cmd_waitpid	proc	near
    ;		putstr("Processo ");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+2204
+	mov	ax,offset DGROUP:s@+2284
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -3951,7 +3957,7 @@ _cmd_waitpid	proc	near
    ;		putstr(" encerrado com codigo de fim ");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+2214
+	mov	ax,offset DGROUP:s@+2294
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -3978,7 +3984,7 @@ _cmd_waitpid	proc	near
    ;		putstr("!\n");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+2244
+	mov	ax,offset DGROUP:s@+2324
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -4037,7 +4043,7 @@ _cmd_wait	proc	near
    ;		putstr("Processo ");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+2247
+	mov	ax,offset DGROUP:s@+2327
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -4064,7 +4070,7 @@ _cmd_wait	proc	near
    ;		putstr(" encerrado com codigo de fim ");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+2257
+	mov	ax,offset DGROUP:s@+2337
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -4091,7 +4097,7 @@ _cmd_wait	proc	near
    ;		putstr("!\n");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+2287
+	mov	ax,offset DGROUP:s@+2367
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -4143,7 +4149,7 @@ _cmd_semls	proc	near
    ;		putstr("Semaphores:\n");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+2290
+	mov	ax,offset DGROUP:s@+2370
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -4168,7 +4174,7 @@ _cmd_semls	proc	near
    ;				putstr("- id=");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+2303
+	mov	ax,offset DGROUP:s@+2383
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -4198,7 +4204,7 @@ _cmd_semls	proc	near
    ;				putstr(" value=");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+2309
+	mov	ax,offset DGROUP:s@+2389
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -4228,7 +4234,7 @@ _cmd_semls	proc	near
    ;				putstr(" queue=");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+2317
+	mov	ax,offset DGROUP:s@+2397
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -4277,7 +4283,7 @@ _cmd_semls	proc	near
    ;		putstr("TOTAL=");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+2325
+	mov	ax,offset DGROUP:s@+2405
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -4304,7 +4310,7 @@ _cmd_semls	proc	near
    ;		putstr("\n\n");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+2332
+	mov	ax,offset DGROUP:s@+2412
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -4348,7 +4354,7 @@ _cmd_semcreate	proc	near
    ;			putstr("Erro em semcreate: numero invalido de argumentos!\n");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+2335
+	mov	ax,offset DGROUP:s@+2415
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -4391,7 +4397,7 @@ _cmd_semcreate	proc	near
    ;		putstr("Semaforo id=");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+2386
+	mov	ax,offset DGROUP:s@+2466
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -4418,7 +4424,7 @@ _cmd_semcreate	proc	near
    ;		putstr(" criado (value=");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+2399
+	mov	ax,offset DGROUP:s@+2479
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -4445,7 +4451,7 @@ _cmd_semcreate	proc	near
    ;		putstr(")\n");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+2415
+	mov	ax,offset DGROUP:s@+2495
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -4489,7 +4495,7 @@ _sem_aplic	proc	near
    ;		putstrxy(65,ini+0,"ÚÄÄ Thread ÄÄÄÄ¿");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+2418
+	mov	ax,offset DGROUP:s@+2498
 	push	ax
 	push	di
 	mov	ax,65
@@ -4500,7 +4506,7 @@ _sem_aplic	proc	near
    ;		putstrxy(65,ini+1,"³ PID  =       ³");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+2435
+	mov	ax,offset DGROUP:s@+2515
 	push	ax
 	mov	ax,di
 	inc	ax
@@ -4513,7 +4519,7 @@ _sem_aplic	proc	near
    ;		putstrxy(65,ini+2,"³ Execucao:    ³");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+2452
+	mov	ax,offset DGROUP:s@+2532
 	push	ax
 	mov	ax,di
 	add	ax,2
@@ -4526,7 +4532,7 @@ _sem_aplic	proc	near
    ;		putstrxy(65,ini+3,"³              ³");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+2469
+	mov	ax,offset DGROUP:s@+2549
 	push	ax
 	mov	ax,di
 	add	ax,3
@@ -4539,7 +4545,7 @@ _sem_aplic	proc	near
    ;		putstrxy(65,ini+4,"ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+2486
+	mov	ax,offset DGROUP:s@+2566
 	push	ax
 	mov	ax,di
 	add	ax,4
@@ -4685,7 +4691,7 @@ _cmd_semtest	proc	near
    ;			putstr("Erro em semtest: numero invalido de argumentos!\n");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+2503
+	mov	ax,offset DGROUP:s@+2583
 @30@86:
 	push	ax
 	call	near ptr _putstr
@@ -4736,7 +4742,7 @@ _cmd_semtest	proc	near
    ;			putstr("Erro em demo: fork() nao conseguiu criar thread!\n");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+2552
+	mov	ax,offset DGROUP:s@+2632
 	jmp	short @30@86
 @30@254:
    ;	
@@ -4773,7 +4779,7 @@ _cmd_semup	proc	near
    ;			putstr("Erro em semtest: numero invalido de argumentos!\n");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+2602
+	mov	ax,offset DGROUP:s@+2682
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -4831,7 +4837,7 @@ _cmd_semdestroy	proc	near
    ;			putstr("Erro em semtest: numero invalido de argumentos!\n");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+2651
+	mov	ax,offset DGROUP:s@+2731
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -4869,8 +4875,652 @@ _cmd_semdestroy	proc	near
 	pop	bp
 	ret	
 _cmd_semdestroy	endp
+   ;	
+   ;	void create()
+   ;	
+	assume	cs:_TEXT
+_create	proc	near
+	push	bp
+	mov	bp,sp
+	sub	sp,22
+	push	si
+	push	di
+   ;	
+   ;	{
+   ;	  extern int demo_linha;
+   ;	  extern int exitcode;
+   ;	  unsigned i;
+   ;	  int ini = 1 + (getpid()%4) * 5;
+   ;	
+	call	near ptr _getpid
+	mov	bx,4
+	cwd	
+	idiv	bx
+	mov	bx,5
+	mov	ax,dx
+	imul	bx
+	inc	ax
+	mov	di,ax
+   ;	
+   ;	  char str[20];
+   ;	  int ec = exitcode;
+   ;	
+	mov	ax,word ptr DGROUP:exitcode
+	mov	word ptr [bp-2],ax
+   ;	
+   ;	
+   ;	  semdown(semid);
+   ;	
+	push	word ptr DGROUP:_semid
+	call	near ptr _semdown
+	pop	cx
+   ;	
+   ;	    
+   ;	  putstrxy(65,ini+0,"ÚÄÄ Thread ÄÄÄÄ¿");
+   ;	
+	push	ds
+	mov	ax,offset DGROUP:s@+2780
+	push	ax
+	push	di
+	mov	ax,65
+	push	ax
+	call	near ptr _putstrxy
+	add	sp,8
+   ;	
+   ;	  putstrxy(65,ini+1,"³ PID  =       ³");
+   ;	
+	push	ds
+	mov	ax,offset DGROUP:s@+2797
+	push	ax
+	mov	ax,di
+	inc	ax
+	push	ax
+	mov	ax,65
+	push	ax
+	call	near ptr _putstrxy
+	add	sp,8
+   ;	
+   ;	  putstrxy(65,ini+2,"³ Execucao:    ³");
+   ;	
+	push	ds
+	mov	ax,offset DGROUP:s@+2814
+	push	ax
+	mov	ax,di
+	add	ax,2
+	push	ax
+	mov	ax,65
+	push	ax
+	call	near ptr _putstrxy
+	add	sp,8
+   ;	
+   ;	  putstrxy(65,ini+3,"³              ³");
+   ;	
+	push	ds
+	mov	ax,offset DGROUP:s@+2831
+	push	ax
+	mov	ax,di
+	add	ax,3
+	push	ax
+	mov	ax,65
+	push	ax
+	call	near ptr _putstrxy
+	add	sp,8
+   ;	
+   ;	  putstrxy(65,ini+4,"ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ");
+   ;	
+	push	ds
+	mov	ax,offset DGROUP:s@+2848
+	push	ax
+	mov	ax,di
+	add	ax,4
+	push	ax
+	mov	ax,65
+	push	ax
+	call	near ptr _putstrxy
+	add	sp,8
+   ;	
+   ;	
+   ;	  inttostr(str,getpid());
+   ;	
+	call	near ptr _getpid
+	push	ax
+	push	ss
+	lea	ax,word ptr [bp-22]
+	push	ax
+	call	near ptr _inttostr
+	add	sp,6
+   ;	
+   ;	  putstrxy(74,ini+1,str);
+   ;	
+	push	ss
+	lea	ax,word ptr [bp-22]
+	push	ax
+	mov	ax,di
+	inc	ax
+	push	ax
+	mov	ax,74
+	push	ax
+	call	near ptr _putstrxy
+	add	sp,8
+   ;	
+   ;	
+   ;	  for (i=0;i<60000U;++i)  {
+   ;	
+	xor	si,si
+	jmp	short @33@114
+@33@58:
+   ;	
+   ;	      unsignedtostr(str,i,5,'0');
+   ;	
+	mov	al,48
+	push	ax
+	mov	ax,5
+	push	ax
+	push	si
+	push	ss
+	lea	ax,word ptr [bp-22]
+	push	ax
+	call	near ptr _unsignedtostr
+	add	sp,10
+   ;	
+   ;	      putstrxy(70,ini+3,str);
+   ;	
+	push	ss
+	lea	ax,word ptr [bp-22]
+	push	ax
+	mov	ax,di
+	add	ax,3
+	push	ax
+	mov	ax,70
+	push	ax
+	call	near ptr _putstrxy
+	add	sp,8
+	inc	si
+@33@114:
+	cmp	si,-5536
+	jb	short @33@58
+   ;	
+   ;	  }
+   ;	  for (i=0;i<60000U;++i)  {
+   ;	
+	xor	si,si
+	jmp	short @33@226
+@33@170:
+   ;	
+   ;	      unsignedtostr(str,i,5,'0');
+   ;	
+	mov	al,48
+	push	ax
+	mov	ax,5
+	push	ax
+	push	si
+	push	ss
+	lea	ax,word ptr [bp-22]
+	push	ax
+	call	near ptr _unsignedtostr
+	add	sp,10
+   ;	
+   ;	      putstrxy(70,ini+3,str);
+   ;	
+	push	ss
+	lea	ax,word ptr [bp-22]
+	push	ax
+	mov	ax,di
+	add	ax,3
+	push	ax
+	mov	ax,70
+	push	ax
+	call	near ptr _putstrxy
+	add	sp,8
+	inc	si
+@33@226:
+	cmp	si,-5536
+	jb	short @33@170
+   ;	
+   ;	  }
+   ;	  for (i=0;i<60000U;++i)  {
+   ;	
+	xor	si,si
+	jmp	short @33@338
+@33@282:
+   ;	
+   ;	      unsignedtostr(str,i,5,'0');
+   ;	
+	mov	al,48
+	push	ax
+	mov	ax,5
+	push	ax
+	push	si
+	push	ss
+	lea	ax,word ptr [bp-22]
+	push	ax
+	call	near ptr _unsignedtostr
+	add	sp,10
+   ;	
+   ;	      putstrxy(70,ini+3,str);
+   ;	
+	push	ss
+	lea	ax,word ptr [bp-22]
+	push	ax
+	mov	ax,di
+	add	ax,3
+	push	ax
+	mov	ax,70
+	push	ax
+	call	near ptr _putstrxy
+	add	sp,8
+	inc	si
+@33@338:
+	cmp	si,-5536
+	jb	short @33@282
+   ;	
+   ;	  }
+   ;	  for (i=0;i<60000U;++i)  {
+   ;	
+	xor	si,si
+	jmp	short @33@450
+@33@394:
+   ;	
+   ;	      unsignedtostr(str,i,5,'0');
+   ;	
+	mov	al,48
+	push	ax
+	mov	ax,5
+	push	ax
+	push	si
+	push	ss
+	lea	ax,word ptr [bp-22]
+	push	ax
+	call	near ptr _unsignedtostr
+	add	sp,10
+   ;	
+   ;	      putstrxy(70,ini+3,str);
+   ;	
+	push	ss
+	lea	ax,word ptr [bp-22]
+	push	ax
+	mov	ax,di
+	add	ax,3
+	push	ax
+	mov	ax,70
+	push	ax
+	call	near ptr _putstrxy
+	add	sp,8
+	inc	si
+@33@450:
+	cmp	si,-5536
+	jb	short @33@394
+   ;	
+   ;	  }
+   ;	  for (i=0;i<60000U;++i)  {
+   ;	
+	xor	si,si
+	jmp	short @33@562
+@33@506:
+   ;	
+   ;	      unsignedtostr(str,i,5,'0');
+   ;	
+	mov	al,48
+	push	ax
+	mov	ax,5
+	push	ax
+	push	si
+	push	ss
+	lea	ax,word ptr [bp-22]
+	push	ax
+	call	near ptr _unsignedtostr
+	add	sp,10
+   ;	
+   ;	      putstrxy(70,ini+3,str);
+   ;	
+	push	ss
+	lea	ax,word ptr [bp-22]
+	push	ax
+	mov	ax,di
+	add	ax,3
+	push	ax
+	mov	ax,70
+	push	ax
+	call	near ptr _putstrxy
+	add	sp,8
+	inc	si
+@33@562:
+	cmp	si,-5536
+	jb	short @33@506
+   ;	
+   ;	  }
+   ;	  for (i=0;i<60000U;++i)  {
+   ;	
+	xor	si,si
+	jmp	short @33@674
+@33@618:
+   ;	
+   ;	      unsignedtostr(str,i,5,'0');
+   ;	
+	mov	al,48
+	push	ax
+	mov	ax,5
+	push	ax
+	push	si
+	push	ss
+	lea	ax,word ptr [bp-22]
+	push	ax
+	call	near ptr _unsignedtostr
+	add	sp,10
+   ;	
+   ;	      putstrxy(70,ini+3,str);
+   ;	
+	push	ss
+	lea	ax,word ptr [bp-22]
+	push	ax
+	mov	ax,di
+	add	ax,3
+	push	ax
+	mov	ax,70
+	push	ax
+	call	near ptr _putstrxy
+	add	sp,8
+	inc	si
+@33@674:
+	cmp	si,-5536
+	jb	short @33@618
+   ;	
+   ;	  }
+   ;	  exit(ec);
+   ;	
+	push	word ptr [bp-2]
+	call	near ptr _exit
+	pop	cx
+   ;	
+   ;	}
+   ;	
+	pop	di
+	pop	si
+	mov	sp,bp
+	pop	bp
+	ret	
+_create	endp
+   ;	
+   ;	int cmd_create(int argc, char far *argv[])
+   ;	
+	assume	cs:_TEXT
+_cmd_create	proc	near
+	push	bp
+	mov	bp,sp
+	sub	sp,22
+	push	si
+	push	di
+   ;	
+   ;	{
+   ;		extern int demo_linha;
+   ;		extern int broadcast_sem_id;
+   ;		
+   ;		int contador;
+   ;		int	res,value;
+   ;		semid_t	semid;
+   ;		char	str[20];
+   ;	
+   ;		if	(argc != 2)	{
+   ;	
+	cmp	word ptr [bp+4],2
+	je	short @34@170
+   ;	
+   ;			putstr("Erro em semcreate: numero invalido de argumentos!\n");
+   ;	
+	push	ds
+	mov	ax,offset DGROUP:s@+2865
+@34@86:
+	push	ax
+	call	near ptr _putstr
+	pop	cx
+	pop	cx
+   ;	
+   ;			return 1;
+   ;	
+@34@114:
+	mov	ax,1
+@34@142:
+	jmp	@34@506
+@34@170:
+   ;	
+   ;		}
+   ;		value = 0;
+   ;	
+	mov	word ptr [bp-2],0
+   ;	
+   ;		semid = semcreate(value);
+   ;	
+	push	word ptr [bp-2]
+	call	near ptr _semcreate
+	pop	cx
+	mov	di,ax
+   ;	
+   ;		if	(semid==miniSO_ERROR)
+   ;	
+	cmp	di,-1
+	jne	short @34@226
+	jmp	short @34@114
+@34@226:
+   ;	
+   ;			return 1;
+   ;		putstr("Semaforo id=");
+   ;	
+	push	ds
+	mov	ax,offset DGROUP:s@+2916
+	push	ax
+	call	near ptr _putstr
+	pop	cx
+	pop	cx
+   ;	
+   ;		inttostr(str,semid);
+   ;	
+	push	di
+	push	ss
+	lea	ax,word ptr [bp-22]
+	push	ax
+	call	near ptr _inttostr
+	add	sp,6
+   ;	
+   ;		putstr(str);
+   ;	
+	push	ss
+	lea	ax,word ptr [bp-22]
+	push	ax
+	call	near ptr _putstr
+	pop	cx
+	pop	cx
+   ;	
+   ;		putstr(" criado (value=");
+   ;	
+	push	ds
+	mov	ax,offset DGROUP:s@+2929
+	push	ax
+	call	near ptr _putstr
+	pop	cx
+	pop	cx
+   ;	
+   ;		inttostr(str,value);
+   ;	
+	push	word ptr [bp-2]
+	push	ss
+	lea	ax,word ptr [bp-22]
+	push	ax
+	call	near ptr _inttostr
+	add	sp,6
+   ;	
+   ;		putstr(str);
+   ;	
+	push	ss
+	lea	ax,word ptr [bp-22]
+	push	ax
+	call	near ptr _putstr
+	pop	cx
+	pop	cx
+   ;	
+   ;		putstr(")\n");
+   ;	
+	push	ds
+	mov	ax,offset DGROUP:s@+2945
+	push	ax
+	call	near ptr _putstr
+	pop	cx
+	pop	cx
+   ;	
+   ;		broadcast_sem_id = semid;
+   ;	
+	mov	word ptr DGROUP:broadcast_sem_id,di
+   ;	
+   ;		  
+   ;		if	(argc != 2)  {
+   ;	
+	cmp	word ptr [bp+4],2
+	je	short @34@282
+   ;	
+   ;			putstr("Erro em demo: numero invalido de argumentos!\n");
+   ;	
+	push	ds
+	mov	ax,offset DGROUP:s@+2948
+	jmp	@34@86
+@34@282:
+   ;	
+   ;			return 1;
+   ;		}
+   ;		demo_linha += 5;
+   ;	
+	add	word ptr DGROUP:demo_linha,5
+   ;	
+   ;		if	(demo_linha >21)
+   ;	
+	cmp	word ptr DGROUP:demo_linha,21
+	jle	short @34@338
+   ;	
+   ;			demo_linha = 1;
+   ;	
+	mov	word ptr DGROUP:demo_linha,1
+@34@338:
+   ;	
+   ;		exitcode = atoi(argv[1]);
+   ;	
+	mov	bx,word ptr [bp+6]
+	push	word ptr [bx+6]
+	push	word ptr [bx+4]
+	call	near ptr _atoi
+	pop	cx
+	pop	cx
+	mov	word ptr DGROUP:exitcode,ax
+   ;	
+   ;		
+   ;		for(contador = 1; contador <= 4; contador++) {
+   ;	
+	mov	si,1
+	jmp	short @34@450
+@34@366:
+   ;	
+   ;			if	(fork(create)==miniSO_ERROR)  {
+   ;	
+	mov	ax,offset _create
+	push	ax
+	call	near ptr _fork
+	pop	cx
+	cmp	ax,-1
+	jne	short @34@422
+   ;	
+   ;				putstr("Erro em demo: fork() nao conseguiu criar thread!\n");
+   ;	
+	push	ds
+	mov	ax,offset DGROUP:s@+2994
+	jmp	@34@86
+@34@422:
+	inc	si
+@34@450:
+	cmp	si,4
+	jle	short @34@366
+   ;	
+   ;				return 1;
+   ;			}
+   ;		}
+   ;		
+   ;		return 0;
+   ;	
+	xor	ax,ax
+	jmp	@34@142
+@34@506:
+   ;	
+   ;	}
+   ;	
+	pop	di
+	pop	si
+	mov	sp,bp
+	pop	bp
+	ret	
+_cmd_create	endp
+   ;	
+   ;	int cmd_start(int argc, char far *argv[])
+   ;	
+	assume	cs:_TEXT
+_cmd_start	proc	near
+	push	bp
+	mov	bp,sp
+	sub	sp,2
+   ;	
+   ;	{
+   ;		semid_t semid;
+   ;	
+   ;		if	(argc != 2)	{
+   ;	
+	cmp	word ptr [bp+4],2
+	je	short @35@114
+   ;	
+   ;			putstr("Erro em semtest: numero invalido de argumentos!\n");
+   ;	
+	push	ds
+	mov	ax,offset DGROUP:s@+3044
+	push	ax
+	call	near ptr _putstr
+	pop	cx
+	pop	cx
+   ;	
+   ;			return 1;
+   ;	
+	mov	ax,1
+@35@86:
+	jmp	short @35@142
+@35@114:
+   ;	
+   ;		}
+   ;		semid = atoi(argv[1]);
+   ;	
+	mov	bx,word ptr [bp+6]
+	push	word ptr [bx+6]
+	push	word ptr [bx+4]
+	call	near ptr _atoi
+	pop	cx
+	pop	cx
+	mov	word ptr [bp-2],ax
+   ;	
+   ;		sembroadcast(semid);
+   ;	
+	push	word ptr [bp-2]
+	call	near ptr _sembroadcast
+	pop	cx
+   ;	
+   ;		// return sembroadcast(semid);
+   ;		return 0;
+   ;	
+	xor	ax,ax
+	jmp	short @35@86
+@35@142:
+   ;	
+   ;	}
+   ;	
+	mov	sp,bp
+	pop	bp
+	ret	
+_cmd_start	endp
 _TEXT	ends
 _BSS	segment word public 'BSS'
+broadcast_sem_id	label	word
+	db	2 dup (?)
 _semid	label	word
 	db	2 dup (?)
 var	label	word
@@ -4992,6 +5642,17 @@ s@	label	byte
 	db	'semdestroy'
 	db	0
 	db	' <semid>  destroi um semaforo'
+	db	0
+	db	'create'
+	db	0
+	db	' <semid>  cria processos'
+	db	0
+	db	'start'
+	db	0
+	db	' <semid>  continua execu'
+	db	-25
+	db	-29
+	db	'o dos processos'
 	db	0
 	db	'                  '
 	db	-36
@@ -5350,9 +6011,69 @@ s@	label	byte
 	db	'Erro em semtest: numero invalido de argumentos!'
 	db	10
 	db	0
+	db	-38
+	db	-60
+	db	-60
+	db	' Thread '
+	db	-60
+	db	-60
+	db	-60
+	db	-60
+	db	-65
+	db	0
+	db	-77
+	db	' PID  =       '
+	db	-77
+	db	0
+	db	-77
+	db	' Execucao:    '
+	db	-77
+	db	0
+	db	-77
+	db	'              '
+	db	-77
+	db	0
+	db	-64
+	db	-60
+	db	-60
+	db	-60
+	db	-60
+	db	-60
+	db	-60
+	db	-60
+	db	-60
+	db	-60
+	db	-60
+	db	-60
+	db	-60
+	db	-60
+	db	-60
+	db	-39
+	db	0
+	db	'Erro em semcreate: numero invalido de argumentos!'
+	db	10
+	db	0
+	db	'Semaforo id='
+	db	0
+	db	' criado (value='
+	db	0
+	db	')'
+	db	10
+	db	0
+	db	'Erro em demo: numero invalido de argumentos!'
+	db	10
+	db	0
+	db	'Erro em demo: fork() nao conseguiu criar thread!'
+	db	10
+	db	0
+	db	'Erro em semtest: numero invalido de argumentos!'
+	db	10
+	db	0
 _DATA	ends
 _TEXT	segment byte public 'CODE'
 _TEXT	ends
+	public	_create
+_broadcast_sem_id	equ	broadcast_sem_id
 	public	_sem_aplic
 	public	_semid
 	extrn	_miniSO_sem:word
@@ -5373,6 +6094,7 @@ _argline	equ	argline
 _palavra	equ	palavra
 _cmdline	equ	cmdline
 _end_command	equ	end_command
+	extrn	_sembroadcast:near
 	extrn	_semdestroy:near
 	extrn	_semdown:near
 	extrn	_semup:near
@@ -5402,6 +6124,8 @@ _end_command	equ	end_command
 	extrn	_clrscr:near
 	extrn	_getch:near
 	extrn	_putch:near
+	public	_cmd_start
+	public	_cmd_create
 	public	_cmd_semdestroy
 	public	_cmd_semup
 	public	_cmd_semtest

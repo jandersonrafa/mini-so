@@ -58,7 +58,9 @@ static command_t commands[MAXCOMMANDS] = {
   "semcreate"," <value>   cria um semaforo",					cmd_semcreate,
   "semtest"," <semid>     aplicacao para teste de semaforos",			cmd_semtest,
   "semup"," <semid>       incrementa o valor de um semaforo",			cmd_semup,
-  "semdestroy"," <semid>  destroi um semaforo",					cmd_semdestroy
+  "semdestroy"," <semid>  destroi um semaforo",					cmd_semdestroy,
+  "create"," <semid>  cria processos",					cmd_create,
+  "start"," <semid>  continua execução dos processos",					cmd_start
 };
 
 
@@ -951,3 +953,111 @@ int cmd_semdestroy(int argc, char far *argv[])
 	return semdestroy(semid);
 }
 
+static int broadcast_sem_id;
+
+void create()
+{
+  extern int demo_linha;
+  extern int exitcode;
+  unsigned i;
+  int ini = 1 + (getpid()%4) * 5;
+  char str[20];
+  int ec = exitcode;
+
+  semdown(semid);
+    
+  putstrxy(65,ini+0,"ÚÄÄ Thread ÄÄÄÄ¿");
+  putstrxy(65,ini+1,"³ PID  =       ³");
+  putstrxy(65,ini+2,"³ Execucao:    ³");
+  putstrxy(65,ini+3,"³              ³");
+  putstrxy(65,ini+4,"ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ");
+
+  inttostr(str,getpid());
+  putstrxy(74,ini+1,str);
+
+  for (i=0;i<60000U;++i)  {
+      unsignedtostr(str,i,5,'0');
+      putstrxy(70,ini+3,str);
+  }
+  for (i=0;i<60000U;++i)  {
+      unsignedtostr(str,i,5,'0');
+      putstrxy(70,ini+3,str);
+  }
+  for (i=0;i<60000U;++i)  {
+      unsignedtostr(str,i,5,'0');
+      putstrxy(70,ini+3,str);
+  }
+  for (i=0;i<60000U;++i)  {
+      unsignedtostr(str,i,5,'0');
+      putstrxy(70,ini+3,str);
+  }
+  for (i=0;i<60000U;++i)  {
+      unsignedtostr(str,i,5,'0');
+      putstrxy(70,ini+3,str);
+  }
+  for (i=0;i<60000U;++i)  {
+      unsignedtostr(str,i,5,'0');
+      putstrxy(70,ini+3,str);
+  }
+  exit(ec);
+}
+
+int cmd_create(int argc, char far *argv[])
+{
+	extern int demo_linha;
+	extern int broadcast_sem_id;
+	
+	int contador;
+	int	res,value;
+	semid_t	semid;
+	char	str[20];
+
+	if	(argc != 2)	{
+		putstr("Erro em semcreate: numero invalido de argumentos!\n");
+		return 1;
+	}
+	value = 0;
+	semid = semcreate(value);
+	if	(semid==miniSO_ERROR)
+		return 1;
+	putstr("Semaforo id=");
+	inttostr(str,semid);
+	putstr(str);
+	putstr(" criado (value=");
+	inttostr(str,value);
+	putstr(str);
+	putstr(")\n");
+	broadcast_sem_id = semid;
+	  
+	if	(argc != 2)  {
+		putstr("Erro em demo: numero invalido de argumentos!\n");
+		return 1;
+	}
+	demo_linha += 5;
+	if	(demo_linha >21)
+		demo_linha = 1;
+	exitcode = atoi(argv[1]);
+	
+	for(contador = 1; contador <= 4; contador++) {
+		if	(fork(create)==miniSO_ERROR)  {
+			putstr("Erro em demo: fork() nao conseguiu criar thread!\n");
+			return 1;
+		}
+	}
+	
+	return 0;
+}
+
+int cmd_start(int argc, char far *argv[])
+{
+	semid_t semid;
+
+	if	(argc != 2)	{
+		putstr("Erro em semtest: numero invalido de argumentos!\n");
+		return 1;
+	}
+	semid = atoi(argv[1]);
+	sembroadcast(semid);
+	// return sembroadcast(semid);
+	return 0;
+}

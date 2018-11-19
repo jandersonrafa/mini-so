@@ -644,3 +644,12 @@ int semdestroy (semid_t s)
 	return _AX;
 }
 
+int sembroadcast (semid_t s)
+{
+	_BX = s;
+	asm	{
+		mov  ah,SC_SEMBROADCAST
+		int  22h
+	}
+	return _AX;
+}

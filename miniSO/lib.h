@@ -55,3 +55,4 @@ extern	int		semset			(semid_t s,int value);	/*S*/
 extern	int		semup			(semid_t s);		/*S*/
 extern	int		semdown			(semid_t s);		/*S*/
 extern	int		semdestroy		(semid_t s);		/*S*/
+extern  int 	sembroadcast	(semid_t s);		/*S*/

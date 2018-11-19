@@ -14,10 +14,10 @@ $comm	macro	name,dist,size,count
 	endif
 	?debug	V 300h
 	?debug	S "scall.c"
-	?debug	C E903197847077363616C6C2E63
+	?debug	C E9A2A5734D077363616C6C2E63
 	?debug	C E9EE217847086D696E69534F2E68
-	?debug	C E925548441077363616C6C2E68
-	?debug	C E925548441056C69622E68
+	?debug	C E9B0A5734D077363616C6C2E68
+	?debug	C E969A4734D056C69622E68
 _TEXT	segment byte public 'CODE'
 _TEXT	ends
 DGROUP	group	_DATA,_BSS
@@ -151,6 +151,10 @@ _miniSO_scall_table	label	word
 	db	1
 	db	0
 	dw	_sc_semdestroy
+	db	25
+	db	1
+	db	0
+	dw	_sc_sembroadcast
 _DATA	ends
 _TEXT	segment byte public 'CODE'
    ;	
@@ -253,7 +257,7 @@ _scall	proc	near
 @1@310:
 	inc	si
 @1@338:
-	cmp	si,25
+	cmp	si,26
 	jge	@@0
 	jmp	@1@58
 @@0:
@@ -1603,7 +1607,7 @@ _sc_fork	proc	near
    ;		while	(pcb!=-1)  {
    ;			pcb = get_pcb (nextpid);
    ;	
-	push	word ptr DGROUP:d@w+136
+	push	word ptr DGROUP:d@w+141
 	call	near ptr get_pcb
 	pop	cx
 	mov	si,ax
@@ -1615,24 +1619,24 @@ _sc_fork	proc	near
    ;	
    ;				pid = nextpid;
    ;	
-	mov	di,word ptr DGROUP:d@w+136
+	mov	di,word ptr DGROUP:d@w+141
 @21@198:
    ;	
    ;			if	(nextpid==32767)
    ;	
-	cmp	word ptr DGROUP:d@w+136,32767
+	cmp	word ptr DGROUP:d@w+141,32767
 	jne	short @21@254
    ;	
    ;				nextpid=1;
    ;	
-	mov	word ptr DGROUP:d@w+136,1
+	mov	word ptr DGROUP:d@w+141,1
 	jmp	short @21@282
 @21@254:
    ;	
    ;			else
    ;				nextpid++;
    ;	
-	inc	word ptr DGROUP:d@w+136
+	inc	word ptr DGROUP:d@w+141
 @21@282:
 	cmp	si,-1
 	jne	short @21@142
@@ -1767,7 +1771,7 @@ _sc_fork	proc	near
    ;	
 	sub	word ptr [bp-6],2
 	les	bx,dword ptr [bp-6]
-	mov	word ptr es:[bx],2876
+	mov	word ptr es:[bx],2941
    ;	
    ;		*(--stack)=0;             /* SI */
    ;	
@@ -4623,6 +4627,190 @@ _sc_semdestroy	proc	near
 	pop	bp
 	ret	
 _sc_semdestroy	endp
+   ;	
+   ;	int sc_sembroadcast (semid_t s)
+   ;	
+	assume	cs:_TEXT
+_sc_sembroadcast	proc	near
+	push	bp
+	mov	bp,sp
+	sub	sp,4
+	push	si
+	push	di
+   ;	
+   ;	{
+   ;		int sem;
+   ;		int contador;
+   ;		pcb_t pcb,last,prevthread,nextthread;
+   ;	
+   ;		disable();
+   ;	
+	call	near ptr _disable
+   ;	
+   ;		sem = get_sem_pos(s);
+   ;	
+	push	word ptr [bp+4]
+	call	near ptr get_sem_pos
+	pop	cx
+	mov	si,ax
+   ;	
+   ;		if	(sem==miniSO_ERROR) {
+   ;	
+	cmp	si,-1
+	jne	short @36@114
+   ;	
+   ;			enable();
+   ;	
+	call	near ptr _enable
+   ;	
+   ;			return miniSO_ERROR;
+   ;	
+	mov	ax,-1
+@36@86:
+	jmp	@36@338
+@36@114:
+   ;	
+   ;		}
+   ;		for(contador = 1; contador <= 4; contador++) {
+   ;	
+	mov	word ptr [bp-2],1
+	jmp	@36@282
+@36@142:
+   ;	
+   ;			miniSO_sem[sem].value++;
+   ;	
+	mov	bx,si
+	mov	cl,3
+	shl	bx,cl
+	inc	word ptr DGROUP:_miniSO_sem[bx+4]
+   ;	
+   ;			if	(miniSO_sem[sem].queue!=-1) {
+   ;	
+	mov	bx,si
+	mov	cl,3
+	shl	bx,cl
+	cmp	word ptr DGROUP:_miniSO_sem[bx+6],-1
+	jne	@@11
+	jmp	@36@254
+@@11:
+   ;	
+   ;				pcb = miniSO_sem[sem].queue;
+   ;	
+	mov	bx,si
+	mov	cl,3
+	shl	bx,cl
+	mov	di,word ptr DGROUP:_miniSO_sem[bx+6]
+   ;	
+   ;				miniSO_sem[sem].queue = miniSO_thread[pcb].next;
+   ;	
+	mov	ax,di
+	mov	dx,26
+	imul	dx
+	mov	bx,ax
+	mov	ax,word ptr DGROUP:_miniSO_thread[bx+24]
+	mov	bx,si
+	mov	cl,3
+	shl	bx,cl
+	mov	word ptr DGROUP:_miniSO_sem[bx+6],ax
+   ;	
+   ;				if	(miniSO_sem[sem].queue!=-1)
+   ;	
+	mov	bx,si
+	mov	cl,3
+	shl	bx,cl
+	cmp	word ptr DGROUP:_miniSO_sem[bx+6],-1
+	je	short @36@226
+   ;	
+   ;					miniSO_thread[miniSO_sem[sem].queue].prev = -1;
+   ;	
+	mov	bx,si
+	mov	cl,3
+	shl	bx,cl
+	mov	ax,word ptr DGROUP:_miniSO_sem[bx+6]
+	mov	dx,26
+	imul	dx
+	mov	bx,ax
+	mov	word ptr DGROUP:_miniSO_thread[bx+22],-1
+@36@226:
+   ;	
+   ;				last = miniSO_thread[miniSO_ready].prev;
+   ;	
+	mov	ax,word ptr DGROUP:_miniSO_ready
+	mov	dx,26
+	imul	dx
+	mov	bx,ax
+	mov	ax,word ptr DGROUP:_miniSO_thread[bx+22]
+	mov	word ptr [bp-4],ax
+   ;	
+   ;				miniSO_thread[pcb].prev = last;
+   ;	
+	mov	ax,di
+	mov	dx,26
+	imul	dx
+	mov	dx,word ptr [bp-4]
+	mov	bx,ax
+	mov	word ptr DGROUP:_miniSO_thread[bx+22],dx
+   ;	
+   ;				miniSO_thread[last].next=pcb;
+   ;	
+	mov	ax,word ptr [bp-4]
+	mov	dx,26
+	imul	dx
+	mov	bx,ax
+	mov	word ptr DGROUP:_miniSO_thread[bx+24],di
+   ;	
+   ;				miniSO_thread[miniSO_ready].prev=pcb;
+   ;	
+	mov	ax,word ptr DGROUP:_miniSO_ready
+	mov	dx,26
+	imul	dx
+	mov	bx,ax
+	mov	word ptr DGROUP:_miniSO_thread[bx+22],di
+   ;	
+   ;				miniSO_thread[pcb].next=miniSO_ready;
+   ;	
+	mov	ax,di
+	mov	dx,26
+	imul	dx
+	mov	dx,word ptr DGROUP:_miniSO_ready
+	mov	bx,ax
+	mov	word ptr DGROUP:_miniSO_thread[bx+24],dx
+   ;	
+   ;				miniSO_thread[pcb].status = READY;
+   ;	
+	mov	ax,di
+	mov	dx,26
+	imul	dx
+	mov	bx,ax
+	mov	word ptr DGROUP:_miniSO_thread[bx+4],0
+@36@254:
+	inc	word ptr [bp-2]
+@36@282:
+	cmp	word ptr [bp-2],4
+	jg	@@12
+	jmp	@36@142
+@@12:
+   ;	
+   ;			}
+   ;		}
+   ;		enable();
+   ;	
+	call	near ptr _enable
+   ;	
+   ;		return miniSO_OK;
+   ;	
+	mov	ax,1
+	jmp	@36@86
+@36@338:
+   ;	
+   ;	}
+   ;	
+	pop	di
+	pop	si
+	mov	sp,bp
+	pop	bp
+	ret	
+_sc_sembroadcast	endp
 _TEXT	ends
 _BSS	segment word public 'BSS'
 _miniSO_oldisr	label	dword
@@ -4705,6 +4893,7 @@ _miniSO_col	equ	miniSO_col
 	extrn	_putstr:near
 	extrn	_getch:near
 	extrn	_putch:near
+	public	_sc_sembroadcast
 	public	_sc_semdestroy
 	public	_sc_semdown
 	public	_sc_semup
