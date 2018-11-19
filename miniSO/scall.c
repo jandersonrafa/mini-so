@@ -1020,20 +1020,20 @@ int sc_sembroadcast (semid_t s)
 		enable();
 		return miniSO_ERROR;
 	}
-	for(contador = 1; contador <= 4; contador++) {
+	
+	while(miniSO_sem[sem].queue!=-1) {
 		miniSO_sem[sem].value++;
-		if	(miniSO_sem[sem].queue!=-1) {
-			pcb = miniSO_sem[sem].queue;
-			miniSO_sem[sem].queue = miniSO_thread[pcb].next;
-			if	(miniSO_sem[sem].queue!=-1)
-				miniSO_thread[miniSO_sem[sem].queue].prev = -1;
-			last = miniSO_thread[miniSO_ready].prev;
-			miniSO_thread[pcb].prev = last;
-			miniSO_thread[last].next=pcb;
-			miniSO_thread[miniSO_ready].prev=pcb;
-			miniSO_thread[pcb].next=miniSO_ready;
-			miniSO_thread[pcb].status = READY;
-		}
+		pcb = miniSO_sem[sem].queue;
+		miniSO_sem[sem].queue = miniSO_thread[pcb].next;
+		if	(miniSO_sem[sem].queue!=-1)
+			miniSO_thread[miniSO_sem[sem].queue].prev = -1;
+		last = miniSO_thread[miniSO_ready].prev;
+		miniSO_thread[pcb].prev = last;
+		miniSO_thread[last].next=pcb;
+		miniSO_thread[miniSO_ready].prev=pcb;
+		miniSO_thread[pcb].next=miniSO_ready;
+		miniSO_thread[pcb].status = READY;
+		
 	}
 	enable();
 	return miniSO_OK;

@@ -1,4 +1,4 @@
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 1
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 1
 scall.ASM
 
 
@@ -8,7 +8,7 @@ scall.ASM
       3					     endm
       4					     ?debug  V 300h
       5					     ?debug  S "scall.c"
-      6					     ?debug  C E9A2A5734D077363616C6C2E63
+      6					     ?debug  C E90AAB734D077363616C6C2E63
       7					     ?debug  C E9EE217847086D696E69534F2E68
       8					     ?debug  C E9B0A5734D077363616C6C2E68
       9					     ?debug  C E969A4734D056C69622E68
@@ -60,7 +60,7 @@ scall.ASM
      55	001A  03			     db	     3
      56	001B  00			     db	     0
      57	001C  00			     db	     0
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 2
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 2
 scall.ASM
 
 
@@ -122,7 +122,7 @@ scall.ASM
     112	0061  00			     db	     0
     113	0062  00			     db	     0
     114	0063  111Br			     dw	     _sc_getppid
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 3
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 3
 scall.ASM
 
 
@@ -184,7 +184,7 @@ scall.ASM
     169					;		     if	     (servico==(unsigned)miniSO_scall_table[i].ah) {
     170					;
     171	000D  8B C6			     mov     ax,si
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 4
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 4
 scall.ASM
 
 
@@ -246,7 +246,7 @@ scall.ASM
     226	0064  8B D8			     mov     bx,ax
     227	0066  FF 97 000Er		     call    word ptr DGROUP:_miniSO_scall_table[bx+3]
     228	006A  59			     pop     cx
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 5
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 5
 scall.ASM
 
 
@@ -308,7 +308,7 @@ scall.ASM
     283					;
     284					;    {
     285					;	     mov_dx(pos);
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 6
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 6
 scall.ASM
 
 
@@ -370,7 +370,7 @@ scall.ASM
     340					;
     341					     assume  cs:_TEXT
     342	00C1			     scroll  proc    near
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 7
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 7
 scall.ASM
 
 
@@ -432,7 +432,7 @@ scall.ASM
     397					;
     398					;	     car = car & 0x00ff;
     399					;
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 8
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 8
 scall.ASM
 
 
@@ -494,7 +494,7 @@ scall.ASM
     454					;		     mov_bh(miniSO_pag);
     455					;
     456	0117  8A 3E 0002r		     mov     bh,byte ptr DGROUP:miniSO_pag
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 9
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 9
 scall.ASM
 
 
@@ -556,7 +556,7 @@ scall.ASM
     511	0150  46			     inc     si
     512	0151  EB 03			     jmp     short @5@338
     513	0153			     @5@310:
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 10
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 10
 scall.ASM
 
 
@@ -618,7 +618,7 @@ scall.ASM
     568					;	  miniSO_iskey = 0;
     569					;
     570	017D  C6 06 0003r 00		     mov     byte ptr DGROUP:miniSO_iskey,0
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 11
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 11
 scall.ASM
 
 
@@ -680,7 +680,7 @@ scall.ASM
     625	01B3  A2 0004r			     mov     byte ptr DGROUP:miniSO_key,al
     626					;
     627					;	  al = 0;
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 12
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 12
 scall.ASM
 
 
@@ -742,7 +742,7 @@ scall.ASM
     682					;      int_10h();
     683					;
     684	01D3  CD 10			     int      10h
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 13
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 13
 scall.ASM
 
 
@@ -804,7 +804,7 @@ scall.ASM
     739					;      return 0;
     740					;
     741	01F6  33 C0			     xor     ax,ax
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 14
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 14
 scall.ASM
 
 
@@ -866,7 +866,7 @@ scall.ASM
     796					;
     797					     assume  cs:_TEXT
     798	021A			     _sc_gotoxy	     proc    near
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 15
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 15
 scall.ASM
 
 
@@ -928,7 +928,7 @@ scall.ASM
     853					;      struct date far *dt;
     854					;      unsigned	d,m,a;
     855					;
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 16
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 16
 scall.ASM
 
 
@@ -990,7 +990,7 @@ scall.ASM
     910	029C  BA 000A			     mov     dx,10
     911	029F  F7 EA			     imul    dx
     912	02A1  8A 56 F8			     mov     dl,byte ptr [bp-8]
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 17
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 17
 scall.ASM
 
 
@@ -1052,7 +1052,7 @@ scall.ASM
     967					     assume  cs:_TEXT
     968	02F8			     _sc_gettime     proc    near
     969	02F8  55			     push    bp
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 18
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 18
 scall.ASM
 
 
@@ -1114,7 +1114,7 @@ scall.ASM
    1024	033F  C4 5E FC			     les     bx,dword ptr [bp-4]
    1025	0342  26: 88 47	01		     mov     byte ptr es:[bx+1],al
    1026					;
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 19
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 19
 scall.ASM
 
 
@@ -1176,7 +1176,7 @@ scall.ASM
    1081					;      if ( miniSO_nextthread == miniSO_NONE )
    1082					;
    1083	0394  83 3E 0004r FF		     cmp     word ptr DGROUP:_miniSO_nextthread,-1
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 20
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 20
 scall.ASM
 
 
@@ -1238,7 +1238,7 @@ scall.ASM
    1138	03E5  BA 001A			     mov     dx,26
    1139	03E8  F7 EA			     imul    dx
    1140	03EA  8B D8			     mov     bx,ax
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 21
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 21
 scall.ASM
 
 
@@ -1300,7 +1300,7 @@ scall.ASM
    1195	043C  C3			     ret
    1196	043D			     _miniSO_contextswitch   endp
    1197					;
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 22
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 22
 scall.ASM
 
 
@@ -1362,7 +1362,7 @@ scall.ASM
    1252					;
    1253					;      getch();
    1254					;
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 23
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 23
 scall.ASM
 
 
@@ -1424,7 +1424,7 @@ scall.ASM
    1309	04B0  83 F9 10			     cmp     cx,16
    1310	04B3  7C D4			     jl	     short @17@58
    1311					;
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 24
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 24
 scall.ASM
 
 
@@ -1486,7 +1486,7 @@ scall.ASM
    1366					;    {
    1367					;      pcb_t i;
    1368					;
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 25
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 25
 scall.ASM
 
 
@@ -1548,7 +1548,7 @@ scall.ASM
    1423	0533  8B D8			     mov     bx,ax
    1424	0535  C7 87 000Br 0001		     mov     word ptr DGROUP:_miniSO_thread[bx+4],1
    1425					;
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 26
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 26
 scall.ASM
 
 
@@ -1610,7 +1610,7 @@ scall.ASM
    1480	0596  83 FE 0F			     cmp     si,15
    1481	0599  7C DB			     jl	     short @19@58
    1482					;
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 27
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 27
 scall.ASM
 
 
@@ -1672,7 +1672,7 @@ scall.ASM
    1537					;
    1538	05D0  CD 19			     int	     19h
    1539					;
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 28
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 28
 scall.ASM
 
 
@@ -1734,7 +1734,7 @@ scall.ASM
    1594					;	     /*	Gera um	pid para a thread */
    1595					;	     pcb = 0;
    1596					;
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 29
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 29
 scall.ASM
 
 
@@ -1796,7 +1796,7 @@ scall.ASM
    1651	0632  A3 0009r			     mov     word ptr DGROUP:_miniSO_free,ax
    1652					;
    1653					;	     miniSO_thread[pcb].pid = pid;
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 30
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 30
 scall.ASM
 
 
@@ -1858,7 +1858,7 @@ scall.ASM
    1708					;
    1709					;	     *(--stack)=(unsigned)sc_exit;
    1710					;
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 31
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 31
 scall.ASM
 
 
@@ -1920,13 +1920,13 @@ scall.ASM
    1765					;	     *(--stack)=miniSO_DATASEGMENT;/* DS */
    1766					;
    1767	0702  83 6E FA 02		     sub     word ptr [bp-6],2
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 32
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 32
 scall.ASM
 
 
 
    1768	0706  C4 5E FA			     les     bx,dword ptr [bp-6]
-   1769	0709  26: C7 07	0B7D		     mov     word ptr es:[bx],2941
+   1769	0709  26: C7 07	0B7B		     mov     word ptr es:[bx],2939
    1770					;
    1771					;	     *(--stack)=0;	       /* SI */
    1772					;
@@ -1982,7 +1982,7 @@ scall.ASM
    1822	076D  59			     pop     cx
    1823	076E  59			     pop     cx
    1824	076F  50			     push    ax
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 33
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 33
 scall.ASM
 
 
@@ -2044,7 +2044,7 @@ scall.ASM
    1879					;
    1880					;	     /*	Descobre qual a	ultima thread */
    1881					;	     last = miniSO_thread[miniSO_ready].prev;
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 34
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 34
 scall.ASM
 
 
@@ -2106,7 +2106,7 @@ scall.ASM
    1936					;
    1937	082E  5F			     pop     di
    1938	082F  5E			     pop     si
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 35
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 35
 scall.ASM
 
 
@@ -2168,7 +2168,7 @@ scall.ASM
    1993					;
    1994					;		     return miniSO_ERROR;
    1995					;
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 36
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 36
 scall.ASM
 
 
@@ -2230,7 +2230,7 @@ scall.ASM
    2050	08AF  8B BF 001Br		     mov     di,word ptr DGROUP:_miniSO_thread[bx+20]
    2051	08B3  83 FF FF			     cmp     di,-1
    2052	08B6  75 AE			     jne     short @22@198
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 37
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 37
 scall.ASM
 
 
@@ -2292,7 +2292,7 @@ scall.ASM
    2107					;	     prevthread	= miniSO_thread[pcb].prev;
    2108					;
    2109	090C  8B C6			     mov     ax,si
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 38
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 38
 scall.ASM
 
 
@@ -2354,7 +2354,7 @@ scall.ASM
    2164					;
    2165					;				     if	     (nextthread==miniSO_ready)
    2166					;
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 39
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 39
 scall.ASM
 
 
@@ -2416,7 +2416,7 @@ scall.ASM
    2221					;	     pai = get_pcb(miniSO_thread[pcb].ppid);
    2222					;
    2223	0994  8B C6			     mov     ax,si
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 40
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 40
 scall.ASM
 
 
@@ -2478,7 +2478,7 @@ scall.ASM
    2278	09EA  F7 EA			     imul    dx
    2279	09EC  8B D8			     mov     bx,ax
    2280	09EE  83 BF 001Br FF		     cmp     word ptr DGROUP:_miniSO_thread[bx+20],-1
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 41
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 41
 scall.ASM
 
 
@@ -2540,7 +2540,7 @@ scall.ASM
    2335	0A41  8B C7			     mov     ax,di
    2336	0A43  BA 001A			     mov     dx,26
    2337	0A46  F7 EA			     imul    dx
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 42
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 42
 scall.ASM
 
 
@@ -2602,7 +2602,7 @@ scall.ASM
    2392					;
    2393	0A94  A1 0007r			     mov     ax,word ptr DGROUP:_miniSO_ready
    2394	0A97  BA 001A			     mov     dx,26
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 43
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 43
 scall.ASM
 
 
@@ -2664,7 +2664,7 @@ scall.ASM
    2449	0B00  F7 EA			     imul    dx
    2450	0B02  8B D8			     mov     bx,ax
    2451	0B04  C7 87 000Br 0000		     mov     word ptr DGROUP:_miniSO_thread[bx+4],0
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 44
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 44
 scall.ASM
 
 
@@ -2726,7 +2726,7 @@ scall.ASM
    2506					;	     disable();
    2507					;
    2508	0B36  E8 0000e			     call    near ptr _disable
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 45
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 45
 scall.ASM
 
 
@@ -2788,7 +2788,7 @@ scall.ASM
    2563					;		     /*	O processo-filho ainda esta em execucao... */
    2564					;		     atual = miniSO_ready;
    2565					;
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 46
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 46
 scall.ASM
 
 
@@ -2850,7 +2850,7 @@ scall.ASM
    2620	0BD5  F7 EA			     imul    dx
    2621	0BD7  8B D8			     mov     bx,ax
    2622	0BD9  C7 87 001Fr FFFF		     mov     word ptr DGROUP:_miniSO_thread[bx+24],-1
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 47
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 47
 scall.ASM
 
 
@@ -2912,7 +2912,7 @@ scall.ASM
    2677					;
    2678					;			     ;
    2679					;		     disable();
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 48
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 48
 scall.ASM
 
 
@@ -2974,7 +2974,7 @@ scall.ASM
    2734					;
    2735					;	     }
    2736					;
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 49
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 49
 scall.ASM
 
 
@@ -3036,7 +3036,7 @@ scall.ASM
    2791	0CD2  8B 16 0009r		     mov     dx,word ptr DGROUP:_miniSO_free
    2792	0CD6  8B D8			     mov     bx,ax
    2793	0CD8  89 97 001Fr		     mov     word ptr DGROUP:_miniSO_thread[bx+24],dx
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 50
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 50
 scall.ASM
 
 
@@ -3098,7 +3098,7 @@ scall.ASM
    2848					;
    2849					;	     if	     (miniSO_thread[miniSO_ready].zombies==-1) {
    2850					;
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 51
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 51
 scall.ASM
 
 
@@ -3160,7 +3160,7 @@ scall.ASM
    2905	0D63  8B C6			     mov     ax,si
    2906	0D65  BA 001A			     mov     dx,26
    2907	0D68  F7 EA			     imul    dx
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 52
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 52
 scall.ASM
 
 
@@ -3222,7 +3222,7 @@ scall.ASM
    2962	0DC2  8B D8			     mov     bx,ax
    2963	0DC4  83 BF 000Br 03		     cmp     word ptr DGROUP:_miniSO_thread[bx+4],3
    2964	0DC9  74 F0			     je	     short @24@142
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 53
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 53
 scall.ASM
 
 
@@ -3284,7 +3284,7 @@ scall.ASM
    3019					;	     miniSO_thread[zombie].next	= miniSO_free;
    3020					;
    3021	0E21  8B C7			     mov     ax,di
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 54
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 54
 scall.ASM
 
 
@@ -3346,7 +3346,7 @@ scall.ASM
    3076	0E7B  5F			     pop     di
    3077	0E7C  5E			     pop     si
    3078	0E7D  8B E5			     mov     sp,bp
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 55
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 55
 scall.ASM
 
 
@@ -3408,7 +3408,7 @@ scall.ASM
    3133					;
    3134					;		     miniSO_thread[i].next   = miniSO_free;
    3135					;
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 56
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 56
 scall.ASM
 
 
@@ -3470,7 +3470,7 @@ scall.ASM
    3190	0F16  BA 001A			     mov     dx,26
    3191	0F19  F7 EA			     imul    dx
    3192	0F1B  8B D8			     mov     bx,ax
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 57
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 57
 scall.ASM
 
 
@@ -3532,7 +3532,7 @@ scall.ASM
    3247	0F63  83 BF 000Br 03		     cmp     word ptr DGROUP:_miniSO_thread[bx+4],3
    3248	0F68  74 03			     je	     @@5
    3249	0F6A  E9 0080			     jmp     @25@534
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 58
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 58
 scall.ASM
 
 
@@ -3594,7 +3594,7 @@ scall.ASM
    3304					;
    3305	0FD0  A1 0007r			     mov     ax,word ptr DGROUP:_miniSO_ready
    3306	0FD3  BA 001A			     mov     dx,26
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 59
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 59
 scall.ASM
 
 
@@ -3656,7 +3656,7 @@ scall.ASM
    3361	102A  8B D8			     mov     bx,ax
    3362	102C  89 97 001Fr		     mov     word ptr DGROUP:_miniSO_thread[bx+24],dx
    3363					;
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 60
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 60
 scall.ASM
 
 
@@ -3718,7 +3718,7 @@ scall.ASM
    3418	1083  8B C6			     mov     ax,si
    3419	1085  BA 001A			     mov     dx,26
    3420	1088  F7 EA			     imul    dx
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 61
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 61
 scall.ASM
 
 
@@ -3780,7 +3780,7 @@ scall.ASM
    3475					;	     miniSO_nextthread=nextthread;
    3476					;
    3477	10F0  8B 46 FA			     mov     ax,word ptr [bp-6]
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 62
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 62
 scall.ASM
 
 
@@ -3842,7 +3842,7 @@ scall.ASM
    3532					;    {
    3533					;	     return miniSO_thread[miniSO_ready].ppid;
    3534					;
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 63
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 63
 scall.ASM
 
 
@@ -3904,7 +3904,7 @@ scall.ASM
    3589					;
    3590					;	     }
    3591					;	     /*	Seta os	sinais recebidos */
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 64
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 64
 scall.ASM
 
 
@@ -3966,7 +3966,7 @@ scall.ASM
    3646	11A8  F7 EA			     imul    dx
    3647	11AA  8B D8			     mov     bx,ax
    3648	11AC  8B BF 001Dr		     mov     di,word ptr DGROUP:_miniSO_thread[bx+22]
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 65
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 65
 scall.ASM
 
 
@@ -4028,7 +4028,7 @@ scall.ASM
    3703	120D  8B D8			     mov     bx,ax
    3704	120F  58			     pop     ax
    3705	1210  31 87 0011r		     xor     word ptr DGROUP:_miniSO_thread[bx+10],ax
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 66
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 66
 scall.ASM
 
 
@@ -4090,7 +4090,7 @@ scall.ASM
    3760	1243  8B 36 0007r		     mov     si,word ptr DGROUP:_miniSO_ready
    3761					;
    3762					;	     /*	Verifica se ja'	nao recebeu os sinais */
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 67
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 67
 scall.ASM
 
 
@@ -4152,7 +4152,7 @@ scall.ASM
    3817					;
    3818	1296  8B C6			     mov     ax,si
    3819	1298  BA 001A			     mov     dx,26
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 68
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 68
 scall.ASM
 
 
@@ -4214,7 +4214,7 @@ scall.ASM
    3874					;		     miniSO_thread[pcb].status = WAITSIG;
    3875					;
    3876	12F3  8B C6			     mov     ax,si
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 69
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 69
 scall.ASM
 
 
@@ -4276,7 +4276,7 @@ scall.ASM
    3931					;
    3932					     assume  cs:_TEXT
    3933	1332			     get_sem_pos     proc    near
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 70
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 70
 scall.ASM
 
 
@@ -4338,7 +4338,7 @@ scall.ASM
    3988	1367  8B EC			     mov     bp,sp
    3989	1369  56			     push    si
    3990					;
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 71
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 71
 scall.ASM
 
 
@@ -4400,7 +4400,7 @@ scall.ASM
    4045	13AB  8B DE			     mov     bx,si
    4046	13AD  B1 03			     mov     cl,3
    4047	13AF  D3 E3			     shl     bx,cl
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 72
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 72
 scall.ASM
 
 
@@ -4462,7 +4462,7 @@ scall.ASM
    4102	13F2  8B EC			     mov     bp,sp
    4103	13F4  56			     push    si
    4104					;
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 73
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 73
 scall.ASM
 
 
@@ -4524,7 +4524,7 @@ scall.ASM
    4159	142B  8B EC			     mov     bp,sp
    4160	142D  83 EC 02			     sub     sp,2
    4161	1430  56			     push    si
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 74
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 74
 scall.ASM
 
 
@@ -4586,7 +4586,7 @@ scall.ASM
    4216	1468  B1 03			     mov     cl,3
    4217	146A  D3 E3			     shl     bx,cl
    4218	146C  8B BF 01ADr		     mov     di,word ptr DGROUP:_miniSO_sem[bx+6]
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 75
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 75
 scall.ASM
 
 
@@ -4648,7 +4648,7 @@ scall.ASM
    4273	14CF  BA 001A			     mov     dx,26
    4274	14D2  F7 EA			     imul    dx
    4275	14D4  8B D8			     mov     bx,ax
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 76
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 76
 scall.ASM
 
 
@@ -4710,7 +4710,7 @@ scall.ASM
    4330	151A  83 EC 08			     sub     sp,8
    4331	151D  56			     push    si
    4332	151E  57			     push    di
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 77
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 77
 scall.ASM
 
 
@@ -4772,7 +4772,7 @@ scall.ASM
    4387					;		     prevthread	= miniSO_thread[pcb].prev;
    4388					;
    4389	1557  8B C6			     mov     ax,si
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 78
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 78
 scall.ASM
 
 
@@ -4834,7 +4834,7 @@ scall.ASM
    4444	15A3  8B D8			     mov     bx,ax
    4445	15A5  8B 87 001Fr		     mov     ax,word ptr DGROUP:_miniSO_thread[bx+24]
    4446	15A9			     @34@254:
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 79
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 79
 scall.ASM
 
 
@@ -4896,7 +4896,7 @@ scall.ASM
    4501	15F6  F7 EA			     imul    dx
    4502	15F8  8B D8			     mov     bx,ax
    4503	15FA  C7 87 001Fr FFFF		     mov     word ptr DGROUP:_miniSO_thread[bx+24],-1
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 80
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 80
 scall.ASM
 
 
@@ -4958,7 +4958,7 @@ scall.ASM
    4558					;	     else
    4559					;		     enable();
    4560					;
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 81
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 81
 scall.ASM
 
 
@@ -5020,7 +5020,7 @@ scall.ASM
    4615					;	     miniSO_sem[sem].status = FREE;
    4616					;
    4617	1681  8B DE			     mov     bx,si
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 82
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 82
 scall.ASM
 
 
@@ -5048,7 +5048,7 @@ scall.ASM
    4638	1695			     _sc_sembroadcast	     proc    near
    4639	1695  55			     push    bp
    4640	1696  8B EC			     mov     bp,sp
-   4641	1698  83 EC 04			     sub     sp,4
+   4641	1698  83 EC 02			     sub     sp,2
    4642	169B  56			     push    si
    4643	169C  57			     push    di
    4644					;
@@ -5081,340 +5081,329 @@ scall.ASM
    4671					;
    4672	16B1  B8 FFFF			     mov     ax,-1
    4673	16B4			     @36@86:
-   4674	16B4  E9 00D9			     jmp     @36@338
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 83
+   4674	16B4  E9 00C8			     jmp     @36@282
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 83
 scall.ASM
 
 
 
    4675	16B7			     @36@114:
-   4676					;
-   4677					;	     }
-   4678					;	     for(contador = 1; contador	<= 4; contador++) {
-   4679					;
-   4680	16B7  C7 46 FE 0001		     mov     word ptr [bp-2],1
-   4681	16BC  E9 00BF			     jmp     @36@282
-   4682	16BF			     @36@142:
+   4676	16B7  E9 00AC			     jmp     @36@226
+   4677	16BA			     @36@142:
+   4678					;
+   4679					;	     }
+   4680					;
+   4681					;	     while(miniSO_sem[sem].queue!=-1) {
+   4682					;		     miniSO_sem[sem].value++;
    4683					;
-   4684					;		     miniSO_sem[sem].value++;
-   4685					;
-   4686	16BF  8B DE			     mov     bx,si
-   4687	16C1  B1 03			     mov     cl,3
-   4688	16C3  D3 E3			     shl     bx,cl
-   4689	16C5  FF 87 01ABr		     inc     word ptr DGROUP:_miniSO_sem[bx+4]
+   4684	16BA  8B DE			     mov     bx,si
+   4685	16BC  B1 03			     mov     cl,3
+   4686	16BE  D3 E3			     shl     bx,cl
+   4687	16C0  FF 87 01ABr		     inc     word ptr DGROUP:_miniSO_sem[bx+4]
+   4688					;
+   4689					;		     pcb = miniSO_sem[sem].queue;
    4690					;
-   4691					;		     if	     (miniSO_sem[sem].queue!=-1) {
-   4692					;
-   4693	16C9  8B DE			     mov     bx,si
-   4694	16CB  B1 03			     mov     cl,3
-   4695	16CD  D3 E3			     shl     bx,cl
-   4696	16CF  83 BF 01ADr FF		     cmp     word ptr DGROUP:_miniSO_sem[bx+6],-1
-   4697	16D4  75 03			     jne     @@11
-   4698	16D6  E9 00A2			     jmp     @36@254
-   4699	16D9			     @@11:
-   4700					;
-   4701					;			     pcb = miniSO_sem[sem].queue;
-   4702					;
-   4703	16D9  8B DE			     mov     bx,si
-   4704	16DB  B1 03			     mov     cl,3
-   4705	16DD  D3 E3			     shl     bx,cl
-   4706	16DF  8B BF 01ADr		     mov     di,word ptr DGROUP:_miniSO_sem[bx+6]
+   4691	16C4  8B DE			     mov     bx,si
+   4692	16C6  B1 03			     mov     cl,3
+   4693	16C8  D3 E3			     shl     bx,cl
+   4694	16CA  8B BF 01ADr		     mov     di,word ptr DGROUP:_miniSO_sem[bx+6]
+   4695					;
+   4696					;		     miniSO_sem[sem].queue = miniSO_thread[pcb].next;
+   4697					;
+   4698	16CE  8B C7			     mov     ax,di
+   4699	16D0  BA 001A			     mov     dx,26
+   4700	16D3  F7 EA			     imul    dx
+   4701	16D5  8B D8			     mov     bx,ax
+   4702	16D7  8B 87 001Fr		     mov     ax,word ptr DGROUP:_miniSO_thread[bx+24]
+   4703	16DB  8B DE			     mov     bx,si
+   4704	16DD  B1 03			     mov     cl,3
+   4705	16DF  D3 E3			     shl     bx,cl
+   4706	16E1  89 87 01ADr		     mov     word ptr DGROUP:_miniSO_sem[bx+6],ax
    4707					;
-   4708					;			     miniSO_sem[sem].queue = miniSO_thread[pcb].next;
+   4708					;		     if	     (miniSO_sem[sem].queue!=-1)
    4709					;
-   4710	16E3  8B C7			     mov     ax,di
-   4711	16E5  BA 001A			     mov     dx,26
-   4712	16E8  F7 EA			     imul    dx
-   4713	16EA  8B D8			     mov     bx,ax
-   4714	16EC  8B 87 001Fr		     mov     ax,word ptr DGROUP:_miniSO_thread[bx+24]
-   4715	16F0  8B DE			     mov     bx,si
-   4716	16F2  B1 03			     mov     cl,3
-   4717	16F4  D3 E3			     shl     bx,cl
-   4718	16F6  89 87 01ADr		     mov     word ptr DGROUP:_miniSO_sem[bx+6],ax
-   4719					;
-   4720					;			     if	     (miniSO_sem[sem].queue!=-1)
-   4721					;
-   4722	16FA  8B DE			     mov     bx,si
-   4723	16FC  B1 03			     mov     cl,3
-   4724	16FE  D3 E3			     shl     bx,cl
-   4725	1700  83 BF 01ADr FF		     cmp     word ptr DGROUP:_miniSO_sem[bx+6],-1
-   4726	1705  74 17			     je	     short @36@226
+   4710	16E5  8B DE			     mov     bx,si
+   4711	16E7  B1 03			     mov     cl,3
+   4712	16E9  D3 E3			     shl     bx,cl
+   4713	16EB  83 BF 01ADr FF		     cmp     word ptr DGROUP:_miniSO_sem[bx+6],-1
+   4714	16F0  74 17			     je	     short @36@198
+   4715					;
+   4716					;			     miniSO_thread[miniSO_sem[sem].queue].prev = -1;
+   4717					;
+   4718	16F2  8B DE			     mov     bx,si
+   4719	16F4  B1 03			     mov     cl,3
+   4720	16F6  D3 E3			     shl     bx,cl
+   4721	16F8  8B 87 01ADr		     mov     ax,word ptr DGROUP:_miniSO_sem[bx+6]
+   4722	16FC  BA 001A			     mov     dx,26
+   4723	16FF  F7 EA			     imul    dx
+   4724	1701  8B D8			     mov     bx,ax
+   4725	1703  C7 87 001Dr FFFF		     mov     word ptr DGROUP:_miniSO_thread[bx+22],-1
+   4726	1709			     @36@198:
    4727					;
-   4728					;				     miniSO_thread[miniSO_sem[sem].queue].prev = -1;
+   4728					;		     last = miniSO_thread[miniSO_ready].prev;
    4729					;
-   4730	1707  8B DE			     mov     bx,si
-   4731	1709  B1 03			     mov     cl,3
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 84
+   4730	1709  A1 0007r			     mov     ax,word ptr DGROUP:_miniSO_ready
+   4731	170C  BA 001A			     mov     dx,26
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 84
 scall.ASM
 
 
 
-   4732	170B  D3 E3			     shl     bx,cl
-   4733	170D  8B 87 01ADr		     mov     ax,word ptr DGROUP:_miniSO_sem[bx+6]
-   4734	1711  BA 001A			     mov     dx,26
-   4735	1714  F7 EA			     imul    dx
-   4736	1716  8B D8			     mov     bx,ax
-   4737	1718  C7 87 001Dr FFFF		     mov     word ptr DGROUP:_miniSO_thread[bx+22],-1
-   4738	171E			     @36@226:
-   4739					;
-   4740					;			     last = miniSO_thread[miniSO_ready].prev;
-   4741					;
-   4742	171E  A1 0007r			     mov     ax,word ptr DGROUP:_miniSO_ready
-   4743	1721  BA 001A			     mov     dx,26
-   4744	1724  F7 EA			     imul    dx
-   4745	1726  8B D8			     mov     bx,ax
-   4746	1728  8B 87 001Dr		     mov     ax,word ptr DGROUP:_miniSO_thread[bx+22]
-   4747	172C  89 46 FC			     mov     word ptr [bp-4],ax
-   4748					;
-   4749					;			     miniSO_thread[pcb].prev = last;
-   4750					;
-   4751	172F  8B C7			     mov     ax,di
-   4752	1731  BA 001A			     mov     dx,26
-   4753	1734  F7 EA			     imul    dx
-   4754	1736  8B 56 FC			     mov     dx,word ptr [bp-4]
-   4755	1739  8B D8			     mov     bx,ax
-   4756	173B  89 97 001Dr		     mov     word ptr DGROUP:_miniSO_thread[bx+22],dx
-   4757					;
-   4758					;			     miniSO_thread[last].next=pcb;
-   4759					;
-   4760	173F  8B 46 FC			     mov     ax,word ptr [bp-4]
-   4761	1742  BA 001A			     mov     dx,26
-   4762	1745  F7 EA			     imul    dx
-   4763	1747  8B D8			     mov     bx,ax
-   4764	1749  89 BF 001Fr		     mov     word ptr DGROUP:_miniSO_thread[bx+24],di
-   4765					;
-   4766					;			     miniSO_thread[miniSO_ready].prev=pcb;
-   4767					;
-   4768	174D  A1 0007r			     mov     ax,word ptr DGROUP:_miniSO_ready
-   4769	1750  BA 001A			     mov     dx,26
-   4770	1753  F7 EA			     imul    dx
-   4771	1755  8B D8			     mov     bx,ax
-   4772	1757  89 BF 001Dr		     mov     word ptr DGROUP:_miniSO_thread[bx+22],di
-   4773					;
-   4774					;			     miniSO_thread[pcb].next=miniSO_ready;
-   4775					;
-   4776	175B  8B C7			     mov     ax,di
-   4777	175D  BA 001A			     mov     dx,26
-   4778	1760  F7 EA			     imul    dx
-   4779	1762  8B 16 0007r		     mov     dx,word ptr DGROUP:_miniSO_ready
-   4780	1766  8B D8			     mov     bx,ax
-   4781	1768  89 97 001Fr		     mov     word ptr DGROUP:_miniSO_thread[bx+24],dx
-   4782					;
-   4783					;			     miniSO_thread[pcb].status = READY;
-   4784					;
-   4785	176C  8B C7			     mov     ax,di
-   4786	176E  BA 001A			     mov     dx,26
-   4787	1771  F7 EA			     imul    dx
-   4788	1773  8B D8			     mov     bx,ax
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 85
+   4732	170F  F7 EA			     imul    dx
+   4733	1711  8B D8			     mov     bx,ax
+   4734	1713  8B 87 001Dr		     mov     ax,word ptr DGROUP:_miniSO_thread[bx+22]
+   4735	1717  89 46 FE			     mov     word ptr [bp-2],ax
+   4736					;
+   4737					;		     miniSO_thread[pcb].prev = last;
+   4738					;
+   4739	171A  8B C7			     mov     ax,di
+   4740	171C  BA 001A			     mov     dx,26
+   4741	171F  F7 EA			     imul    dx
+   4742	1721  8B 56 FE			     mov     dx,word ptr [bp-2]
+   4743	1724  8B D8			     mov     bx,ax
+   4744	1726  89 97 001Dr		     mov     word ptr DGROUP:_miniSO_thread[bx+22],dx
+   4745					;
+   4746					;		     miniSO_thread[last].next=pcb;
+   4747					;
+   4748	172A  8B 46 FE			     mov     ax,word ptr [bp-2]
+   4749	172D  BA 001A			     mov     dx,26
+   4750	1730  F7 EA			     imul    dx
+   4751	1732  8B D8			     mov     bx,ax
+   4752	1734  89 BF 001Fr		     mov     word ptr DGROUP:_miniSO_thread[bx+24],di
+   4753					;
+   4754					;		     miniSO_thread[miniSO_ready].prev=pcb;
+   4755					;
+   4756	1738  A1 0007r			     mov     ax,word ptr DGROUP:_miniSO_ready
+   4757	173B  BA 001A			     mov     dx,26
+   4758	173E  F7 EA			     imul    dx
+   4759	1740  8B D8			     mov     bx,ax
+   4760	1742  89 BF 001Dr		     mov     word ptr DGROUP:_miniSO_thread[bx+22],di
+   4761					;
+   4762					;		     miniSO_thread[pcb].next=miniSO_ready;
+   4763					;
+   4764	1746  8B C7			     mov     ax,di
+   4765	1748  BA 001A			     mov     dx,26
+   4766	174B  F7 EA			     imul    dx
+   4767	174D  8B 16 0007r		     mov     dx,word ptr DGROUP:_miniSO_ready
+   4768	1751  8B D8			     mov     bx,ax
+   4769	1753  89 97 001Fr		     mov     word ptr DGROUP:_miniSO_thread[bx+24],dx
+   4770					;
+   4771					;		     miniSO_thread[pcb].status = READY;
+   4772					;
+   4773	1757  8B C7			     mov     ax,di
+   4774	1759  BA 001A			     mov     dx,26
+   4775	175C  F7 EA			     imul    dx
+   4776	175E  8B D8			     mov     bx,ax
+   4777	1760  C7 87 000Br 0000		     mov     word ptr DGROUP:_miniSO_thread[bx+4],0
+   4778	1766			     @36@226:
+   4779	1766  8B DE			     mov     bx,si
+   4780	1768  B1 03			     mov     cl,3
+   4781	176A  D3 E3			     shl     bx,cl
+   4782	176C  83 BF 01ADr FF		     cmp     word ptr DGROUP:_miniSO_sem[bx+6],-1
+   4783	1771  74 03			     je	     @@11
+   4784	1773  E9 FF44			     jmp     @36@142
+   4785	1776			     @@11:
+   4786					;
+   4787					;
+   4788					;	     }
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 85
 scall.ASM
 
 
 
-   4789	1775  C7 87 000Br 0000		     mov     word ptr DGROUP:_miniSO_thread[bx+4],0
-   4790	177B			     @36@254:
-   4791	177B  FF 46 FE			     inc     word ptr [bp-2]
-   4792	177E			     @36@282:
-   4793	177E  83 7E FE 04		     cmp     word ptr [bp-2],4
-   4794	1782  7F 03			     jg	     @@12
-   4795	1784  E9 FF38			     jmp     @36@142
-   4796	1787			     @@12:
-   4797					;
-   4798					;		     }
-   4799					;	     }
-   4800					;	     enable();
-   4801					;
-   4802	1787  E8 0000e			     call    near ptr _enable
-   4803					;
-   4804					;	     return miniSO_OK;
-   4805					;
-   4806	178A  B8 0001			     mov     ax,1
-   4807	178D  E9 FF24			     jmp     @36@86
-   4808	1790			     @36@338:
-   4809					;
-   4810					;    }
-   4811					;
-   4812	1790  5F			     pop     di
-   4813	1791  5E			     pop     si
-   4814	1792  8B E5			     mov     sp,bp
-   4815	1794  5D			     pop     bp
-   4816	1795  C3			     ret
-   4817	1796			     _sc_sembroadcast	     endp
-   4818	1796			     _TEXT   ends
-   4819	0000			     _BSS    segment word public 'BSS'
-   4820	0000			     _miniSO_oldisr  label   dword
-   4821	0000  04*(??)			     db	     4 dup (?)
-   4822	0004			     _miniSO_nextthread	     label   word
-   4823	0004  02*(??)			     db	     2 dup (?)
-   4824	0006			     _miniSO_delcurthread    label   byte
-   4825	0006  01*(??)			     db	     1 dup (?)
-   4826	0007			     _miniSO_thread  label   word
-   4827	0007  01A0*(??)			     db	     416 dup (?)
-   4828	01A7			     _miniSO_sem     label   word
-   4829	01A7  50*(??)			     db	     80	dup (?)
-   4830					     ?debug  C E9
-   4831					     ?debug  C FA00000000
-   4832	01F7			     _BSS    ends
-   4833	008F			     _DATA   segment word public 'DATA'
-   4834	008F			     s@	     label   byte
-   4835	008F  0A			     db	     10
-   4836	0090  0A			     db	     10
-   4837	0091  00			     db	     0
-   4838	0092  50 72 65 73 73 69	6F+	     db	     'Pressione	uma tecla para reiniciar...'
-   4839	      6E 65 20 75 6D 61	20+
-   4840	      74 65 63 6C 61 20	70+
-   4841	      61 72 61 20 72 65	69+
-   4842	      6E 69 63 69 61 72	2E+
-   4843	      2E 2E
-   4844	00B7  0A			     db	     10
-   4845	00B8  00			     db	     0
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 86
+   4789					;	     enable();
+   4790					;
+   4791	1776  E8 0000e			     call    near ptr _enable
+   4792					;
+   4793					;	     return miniSO_OK;
+   4794					;
+   4795	1779  B8 0001			     mov     ax,1
+   4796	177C  E9 FF35			     jmp     @36@86
+   4797	177F			     @36@282:
+   4798					;
+   4799					;    }
+   4800					;
+   4801	177F  5F			     pop     di
+   4802	1780  5E			     pop     si
+   4803	1781  8B E5			     mov     sp,bp
+   4804	1783  5D			     pop     bp
+   4805	1784  C3			     ret
+   4806	1785			     _sc_sembroadcast	     endp
+   4807	1785			     _TEXT   ends
+   4808	0000			     _BSS    segment word public 'BSS'
+   4809	0000			     _miniSO_oldisr  label   dword
+   4810	0000  04*(??)			     db	     4 dup (?)
+   4811	0004			     _miniSO_nextthread	     label   word
+   4812	0004  02*(??)			     db	     2 dup (?)
+   4813	0006			     _miniSO_delcurthread    label   byte
+   4814	0006  01*(??)			     db	     1 dup (?)
+   4815	0007			     _miniSO_thread  label   word
+   4816	0007  01A0*(??)			     db	     416 dup (?)
+   4817	01A7			     _miniSO_sem     label   word
+   4818	01A7  50*(??)			     db	     80	dup (?)
+   4819					     ?debug  C E9
+   4820					     ?debug  C FA00000000
+   4821	01F7			     _BSS    ends
+   4822	008F			     _DATA   segment word public 'DATA'
+   4823	008F			     s@	     label   byte
+   4824	008F  0A			     db	     10
+   4825	0090  0A			     db	     10
+   4826	0091  00			     db	     0
+   4827	0092  50 72 65 73 73 69	6F+	     db	     'Pressione	uma tecla para reiniciar...'
+   4828	      6E 65 20 75 6D 61	20+
+   4829	      74 65 63 6C 61 20	70+
+   4830	      61 72 61 20 72 65	69+
+   4831	      6E 69 63 69 61 72	2E+
+   4832	      2E 2E
+   4833	00B7  0A			     db	     10
+   4834	00B8  00			     db	     0
+   4835	00B9  6B 69 6C 6C 28 29	3A+	     db	     'kill(): thread 0 excluida!'
+   4836	      20 74 68 72 65 61	64+
+   4837	      20 30 20 65 78 63	6C+
+   4838	      75 69 64 61 21
+   4839	00D3  00			     db	     0
+   4840	00D4  6B 69 6C 6C 28 29	3A+	     db	     'kill(): nao ha'
+   4841	      20 6E 61 6F 20 68	61
+   4842	00E2  27			     db	     39
+   4843	00E3  20 6D 61 69 73 20	74+	     db	     ' mais threads executando!'
+   4844	      68 72 65 61 64 73	20+
+   4845	      65 78 65 63 75 74	61+
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 86
 scall.ASM
 
 
 
-   4846	00B9  6B 69 6C 6C 28 29	3A+	     db	     'kill(): thread 0 excluida!'
-   4847	      20 74 68 72 65 61	64+
-   4848	      20 30 20 65 78 63	6C+
-   4849	      75 69 64 61 21
-   4850	00D3  00			     db	     0
-   4851	00D4  6B 69 6C 6C 28 29	3A+	     db	     'kill(): nao ha'
-   4852	      20 6E 61 6F 20 68	61
-   4853	00E2  27			     db	     39
-   4854	00E3  20 6D 61 69 73 20	74+	     db	     ' mais threads executando!'
-   4855	      68 72 65 61 64 73	20+
-   4856	      65 78 65 63 75 74	61+
-   4857	      6E 64 6F 21
-   4858	00FC  00			     db	     0
-   4859	00FD  77 61 69 74 70 69	64+	     db	     'waitpid(): nao ha'
-   4860	      28 29 3A 20 6E 61	6F+
-   4861	      20 68 61
-   4862	010E  27			     db	     39
-   4863	010F  20 6D 61 69 73 20	74+	     db	     ' mais threads executando!'
-   4864	      68 72 65 61 64 73	20+
-   4865	      65 78 65 63 75 74	61+
-   4866	      6E 64 6F 21
-   4867	0128  00			     db	     0
-   4868	0129  77 61 69 74 28 29	3A+	     db	     'wait(): nao ha'
-   4869	      20 6E 61 6F 20 68	61
-   4870	0137  27			     db	     39
-   4871	0138  20 6D 61 69 73 20	74+	     db	     ' mais threads executando!'
-   4872	      68 72 65 61 64 73	20+
-   4873	      65 78 65 63 75 74	61+
-   4874	      6E 64 6F 21
-   4875	0151  00			     db	     0
-   4876	0152  65 78 69 74 28 29	3A+	     db	     'exit(): thread 0 encerrada!'
-   4877	      20 74 68 72 65 61	64+
-   4878	      20 30 20 65 6E 63	65+
-   4879	      72 72 61 64 61 21
-   4880	016D  00			     db	     0
-   4881	016E  65 78 69 74 28 29	3A+	     db	     'exit(): pai nao encontrado!'
-   4882	      20 70 61 69 20 6E	61+
-   4883	      6F 20 65 6E 63 6F	6E+
-   4884	      74 72 61 64 6F 21
-   4885	0189  00			     db	     0
-   4886	018A  65 78 69 74 28 29	3A+	     db	     'exit(): nao ha'
-   4887	      20 6E 61 6F 20 68	61
-   4888	0198  27			     db	     39
-   4889	0199  20 6D 61 69 73 20	74+	     db	     ' mais threads executando!'
-   4890	      68 72 65 61 64 73	20+
-   4891	      65 78 65 63 75 74	61+
-   4892	      6E 64 6F 21
-   4893	01B2  00			     db	     0
-   4894	01B3  77 61 69 74 73 69	67+	     db	     'waitsignal(): nao	ha'
-   4895	      6E 61 6C 28 29 3A	20+
-   4896	      6E 61 6F 20 68 61
-   4897	01C7  27			     db	     39
-   4898	01C8  20 6D 61 69 73 20	74+	     db	     ' mais threads executando!'
-   4899	      68 72 65 61 64 73	20+
-   4900	      65 78 65 63 75 74	61+
-   4901	      6E 64 6F 21
-   4902	01E1  00			     db	     0
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 87
+   4846	      6E 64 6F 21
+   4847	00FC  00			     db	     0
+   4848	00FD  77 61 69 74 70 69	64+	     db	     'waitpid(): nao ha'
+   4849	      28 29 3A 20 6E 61	6F+
+   4850	      20 68 61
+   4851	010E  27			     db	     39
+   4852	010F  20 6D 61 69 73 20	74+	     db	     ' mais threads executando!'
+   4853	      68 72 65 61 64 73	20+
+   4854	      65 78 65 63 75 74	61+
+   4855	      6E 64 6F 21
+   4856	0128  00			     db	     0
+   4857	0129  77 61 69 74 28 29	3A+	     db	     'wait(): nao ha'
+   4858	      20 6E 61 6F 20 68	61
+   4859	0137  27			     db	     39
+   4860	0138  20 6D 61 69 73 20	74+	     db	     ' mais threads executando!'
+   4861	      68 72 65 61 64 73	20+
+   4862	      65 78 65 63 75 74	61+
+   4863	      6E 64 6F 21
+   4864	0151  00			     db	     0
+   4865	0152  65 78 69 74 28 29	3A+	     db	     'exit(): thread 0 encerrada!'
+   4866	      20 74 68 72 65 61	64+
+   4867	      20 30 20 65 6E 63	65+
+   4868	      72 72 61 64 61 21
+   4869	016D  00			     db	     0
+   4870	016E  65 78 69 74 28 29	3A+	     db	     'exit(): pai nao encontrado!'
+   4871	      20 70 61 69 20 6E	61+
+   4872	      6F 20 65 6E 63 6F	6E+
+   4873	      74 72 61 64 6F 21
+   4874	0189  00			     db	     0
+   4875	018A  65 78 69 74 28 29	3A+	     db	     'exit(): nao ha'
+   4876	      20 6E 61 6F 20 68	61
+   4877	0198  27			     db	     39
+   4878	0199  20 6D 61 69 73 20	74+	     db	     ' mais threads executando!'
+   4879	      68 72 65 61 64 73	20+
+   4880	      65 78 65 63 75 74	61+
+   4881	      6E 64 6F 21
+   4882	01B2  00			     db	     0
+   4883	01B3  77 61 69 74 73 69	67+	     db	     'waitsignal(): nao	ha'
+   4884	      6E 61 6C 28 29 3A	20+
+   4885	      6E 61 6F 20 68 61
+   4886	01C7  27			     db	     39
+   4887	01C8  20 6D 61 69 73 20	74+	     db	     ' mais threads executando!'
+   4888	      68 72 65 61 64 73	20+
+   4889	      65 78 65 63 75 74	61+
+   4890	      6E 64 6F 21
+   4891	01E1  00			     db	     0
+   4892	01E2  73 65 6D 64 6F 77	6E+	     db	     'semdown(): nao ha'
+   4893	      28 29 3A 20 6E 61	6F+
+   4894	      20 68 61
+   4895	01F3  27			     db	     39
+   4896	01F4  20 6D 61 69 73 20	74+	     db	     ' mais threads executando!'
+   4897	      68 72 65 61 64 73	20+
+   4898	      65 78 65 63 75 74	61+
+   4899	      6E 64 6F 21
+   4900	020D  00			     db	     0
+   4901	020E			     _DATA   ends
+   4902	1785			     _TEXT   segment byte public 'CODE'
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 87
 scall.ASM
 
 
 
-   4903	01E2  73 65 6D 64 6F 77	6E+	     db	     'semdown(): nao ha'
-   4904	      28 29 3A 20 6E 61	6F+
-   4905	      20 68 61
-   4906	01F3  27			     db	     39
-   4907	01F4  20 6D 61 69 73 20	74+	     db	     ' mais threads executando!'
-   4908	      68 72 65 61 64 73	20+
-   4909	      65 78 65 63 75 74	61+
-   4910	      6E 64 6F 21
-   4911	020D  00			     db	     0
-   4912	020E			     _DATA   ends
-   4913	1796			     _TEXT   segment byte public 'CODE'
-   4914	1796			     _TEXT   ends
-   4915				     _get_sem_pos    equ     get_sem_pos
-   4916					     extrn   _miniSO_return_addr:near
-   4917					     public  _miniSO_contextswitch
-   4918					     public  _scall
-   4919				     _get_pcb	     equ     get_pcb
-   4920				     _end_mso	     equ     end_mso
-   4921				     _scroll equ     scroll
-   4922				     _getCursorPosition	     equ     getCursorPosition
-   4923				     _setCursorPosition	     equ     setCursorPosition
-   4924					     public  _miniSO_scall_table
-   4925					     public  _miniSO_oldisr
-   4926					     public  _miniSO_nextthread
-   4927					     public  _miniSO_delcurthread
-   4928					     public  _miniSO_free
-   4929					     public  _miniSO_ready
-   4930					     public  _miniSO_thread
-   4931				     _nextsemid	     equ     nextsemid
-   4932					     public  _miniSO_sem
-   4933				     _miniSO_key     equ     miniSO_key
-   4934				     _miniSO_iskey   equ     miniSO_iskey
-   4935				     _miniSO_pag     equ     miniSO_pag
-   4936				     _miniSO_cor     equ     miniSO_cor
-   4937				     _miniSO_col     equ     miniSO_col
-   4938					     extrn   _putstr:near
-   4939					     extrn   _getch:near
-   4940					     extrn   _putch:near
-   4941					     public  _sc_sembroadcast
-   4942					     public  _sc_semdestroy
-   4943					     public  _sc_semdown
-   4944					     public  _sc_semup
-   4945					     public  _sc_semset
-   4946					     public  _sc_semcreate
-   4947					     public  _sc_waitsignal
-   4948					     public  _sc_sendsignal
-   4949					     public  _sc_getppid
-   4950					     public  _sc_getpid
-   4951					     public  _sc_exit
-   4952					     public  _sc_waitpid
-   4953					     public  _sc_wait
-   4954					     public  _sc_kill
-   4955					     public  _sc_fork
-   4956					     public  _sc_reboot
-   4957					     public  _sc_gettime
-   4958					     public  _sc_getdate
-   4959					     public  _sc_gotoxy
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 88
+   4903	1785			     _TEXT   ends
+   4904				     _get_sem_pos    equ     get_sem_pos
+   4905					     extrn   _miniSO_return_addr:near
+   4906					     public  _miniSO_contextswitch
+   4907					     public  _scall
+   4908				     _get_pcb	     equ     get_pcb
+   4909				     _end_mso	     equ     end_mso
+   4910				     _scroll equ     scroll
+   4911				     _getCursorPosition	     equ     getCursorPosition
+   4912				     _setCursorPosition	     equ     setCursorPosition
+   4913					     public  _miniSO_scall_table
+   4914					     public  _miniSO_oldisr
+   4915					     public  _miniSO_nextthread
+   4916					     public  _miniSO_delcurthread
+   4917					     public  _miniSO_free
+   4918					     public  _miniSO_ready
+   4919					     public  _miniSO_thread
+   4920				     _nextsemid	     equ     nextsemid
+   4921					     public  _miniSO_sem
+   4922				     _miniSO_key     equ     miniSO_key
+   4923				     _miniSO_iskey   equ     miniSO_iskey
+   4924				     _miniSO_pag     equ     miniSO_pag
+   4925				     _miniSO_cor     equ     miniSO_cor
+   4926				     _miniSO_col     equ     miniSO_col
+   4927					     extrn   _putstr:near
+   4928					     extrn   _getch:near
+   4929					     extrn   _putch:near
+   4930					     public  _sc_sembroadcast
+   4931					     public  _sc_semdestroy
+   4932					     public  _sc_semdown
+   4933					     public  _sc_semup
+   4934					     public  _sc_semset
+   4935					     public  _sc_semcreate
+   4936					     public  _sc_waitsignal
+   4937					     public  _sc_sendsignal
+   4938					     public  _sc_getppid
+   4939					     public  _sc_getpid
+   4940					     public  _sc_exit
+   4941					     public  _sc_waitpid
+   4942					     public  _sc_wait
+   4943					     public  _sc_kill
+   4944					     public  _sc_fork
+   4945					     public  _sc_reboot
+   4946					     public  _sc_gettime
+   4947					     public  _sc_getdate
+   4948					     public  _sc_gotoxy
+   4949					     public  _sc_wherey
+   4950					     public  _sc_wherex
+   4951					     public  _sc_setcolor
+   4952					     public  _sc_getcolor
+   4953					     public  _sc_clrscr
+   4954					     public  _sc_getch
+   4955					     public  _sc_putch
+   4956					     public  _miniSO_init_semtable
+   4957					     public  _miniSO_init_proctable
+   4958					     extrn   _FP_OFF:near
+   4959					     extrn   _FP_SEG:near
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 88
 scall.ASM
 
 
 
-   4960					     public  _sc_wherey
-   4961					     public  _sc_wherex
-   4962					     public  _sc_setcolor
-   4963					     public  _sc_getcolor
-   4964					     public  _sc_clrscr
-   4965					     public  _sc_getch
-   4966					     public  _sc_putch
-   4967					     public  _miniSO_init_semtable
-   4968					     public  _miniSO_init_proctable
-   4969					     extrn   _FP_OFF:near
-   4970					     extrn   _FP_SEG:near
-   4971					     extrn   _MK_FP:near
-   4972					     extrn   _disable:near
-   4973					     extrn   _enable:near
-   4974					     extrn   _setvect:near
-   4975				     _s@     equ     s@
-   4976					     end
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 89
+   4960					     extrn   _MK_FP:near
+   4961					     extrn   _disable:near
+   4962					     extrn   _enable:near
+   4963					     extrn   _setvect:near
+   4964				     _s@     equ     s@
+   4965					     end
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 89
 Symbol Table
 
 
@@ -5424,7 +5413,7 @@ Symbol Name		Type   Value			   Cref	(defined at #)
 
 ??DATE			Text   "11/19/18"
 ??FILENAME		Text   "scall	"
-??TIME			Text   "20:45:50"
+??TIME			Text   "21:30:18"
 ??VERSION		Number 030A
 @10@58			Near   _TEXT:0207		   763	#764
 @11@58			Near   _TEXT:0218		   786	#787
@@ -5476,7 +5465,7 @@ Symbol Name		Type   Value			   Cref	(defined at #)
 @22@226			Near   _TEXT:08A6		   2000	 #2045
 @22@310			Near   _TEXT:08BC		   #2060  2103
 @22@394			Near   _TEXT:0906		   2070	 2083  #2099
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 90
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 90
 Symbol Table
 
 
@@ -5538,7 +5527,7 @@ Symbol Table
 @29@254			Near   _TEXT:1328		   3900	 #3912
 @29@282			Near   _TEXT:132C		   3918	 #3919
 @29@86			Near   _TEXT:1279		   3772	 #3794
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 91
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 91
 Symbol Table
 
 
@@ -5581,12 +5570,11 @@ Symbol Table
 @35@170			Near   _TEXT:1692		   4612	 #4626
 @35@86			Near   _TEXT:167C		   4600	 #4606
 @36@114			Near   _TEXT:16B7		   4664	 #4675
-@36@142			Near   _TEXT:16BF		   #4682  4795
-@36@226			Near   _TEXT:171E		   4726	 #4738
-@36@254			Near   _TEXT:177B		   4698	 #4790
-@36@282			Near   _TEXT:177E		   4681	 #4792
-@36@338			Near   _TEXT:1790		   4674	 #4808
-@36@86			Near   _TEXT:16B4		   #4673  4807
+@36@142			Near   _TEXT:16BA		   #4677  4784
+@36@198			Near   _TEXT:1709		   4714	 #4726
+@36@226			Near   _TEXT:1766		   4676	 #4778
+@36@282			Near   _TEXT:177F		   4674	 #4797
+@36@86			Near   _TEXT:16B4		   #4673  4796
 @3@114			Near   _TEXT:00BF		   330	#331
 @5@114			Near   _TEXT:010E		   429	#435
 @5@142			Near   _TEXT:0111		   434	#441
@@ -5600,18 +5588,17 @@ Symbol Table
 @6@282			Near   _TEXT:01BC		   577	#637
 @6@86			Near   _TEXT:0186		   #576	 636
 @7@170			Near   _TEXT:01E0		   696	#697
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 92
+@8@58			Near   _TEXT:01EB		   717	#718
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 92
 Symbol Table
 
 
 
-@8@58			Near   _TEXT:01EB		   717	#718
 @9@58			Near   _TEXT:01FA		   742	#743
 @@0			Near   _TEXT:0090		   251	#253
 @@1			Near   _TEXT:03B8		   1101	 #1103
 @@10			Near   _TEXT:1553		   4379	 #4381
-@@11			Near   _TEXT:16D9		   4697	 #4699
-@@12			Near   _TEXT:1787		   4794	 #4796
+@@11			Near   _TEXT:1776		   4783	 #4785
 @@2			Near   _TEXT:0A94		   2386	 #2388
 @@3			Near   _TEXT:0B86		   2559	 #2561
 @@4			Near   _TEXT:0D24		   2856	 #2858
@@ -5621,9 +5608,9 @@ Symbol Table
 @@8			Near   _TEXT:13E9		   4079	 #4081
 @@9			Near   _TEXT:1466		   4209	 #4211
 @CPU			Text   0101H
-@CURSEG			Text   _TEXT			   #10	#14  #18  #22  #148  #1553  #1557  #4819  #4833	 #4913
+@CURSEG			Text   _TEXT			   #10	#14  #18  #22  #148  #1553  #1557  #4808  #4822	 #4902
 @FILENAME		Text   SCALL
-@WORDSIZE		Text   2			   #10	#14  #18  #22  #148  #1553  #1557  #4819  #4833	 #4913
+@WORDSIZE		Text   2			   #10	#14  #18  #22  #148  #1553  #1557  #4808  #4822	 #4902
 B@			Byte   _BSS:0000		   #19
 B@W			Word   _BSS:0000		   #20
 D@			Byte   _DATA:0000		   #15
@@ -5638,50 +5625,50 @@ MINISO_ISKEY		Byte   _DATA:0003		   #29	565  570  620
 MINISO_KEY		Byte   _DATA:0004		   #31	574  625
 MINISO_PAG		Byte   _DATA:0002		   #27	291  317  456
 NEXTSEMID		Word   _DATA:0005		   #33	4015  4020  4027  4029	4048  4050
-S@			Byte   _DATA:008F		   1223	 1247  1969  2174  2593	 2888  3108  3229  3348	 3832  4413  #4834
+S@			Byte   _DATA:008F		   1223	 1247  1969  2174  2593	 2888  3108  3229  3348	 3832  4413  #4823
 SCROLL			Near   _TEXT:00C1		   #342	 440  518
 SETCURSORPOSITION	Near   _TEXT:00A0		   #280	 534  690  826
 _DISABLE		Near   ----:---- Extern		   1371	 1592  1959  2508  2681	 2843  2969  3098  3563	 3756  4170  4340 +
-							   4652	 #4972
+							   4652	 #4961
 _ENABLE			Near   ----:---- Extern		   1218	 1504  1533  1927  1992	 2458  2542  2665  2810	 2953  3062  3486 +
-							   3581	 3720  3895  4186  4307	 4356  4539  4561  4668	 4802  #4973
-_END_MSO		Alias  END_MSO			   #4920
-_FP_OFF			Near   ----:---- Extern		   1821	 #4969
-_FP_SEG			Near   ----:---- Extern		   1806	 #4970
-_GETCH			Near   ----:---- Extern		   1255	 #4939
-_GETCURSORPOSITION	Alias  GETCURSORPOSITION	   #4922
-_GET_PCB		Alias  GET_PCB			   #4919
-_GET_SEM_POS		Alias  GET_SEM_POS		   #4915
-_MINISO_COL		Alias  MINISO_COL		   #4937
-_MINISO_CONTEXTSWITCH	Near   _TEXT:0391		   #1076  4917
-_MINISO_COR		Alias  MINISO_COR		   #4936
-_MINISO_DELCURTHREAD	Byte   _BSS:0006		   1107	 1113  1495  2189  2462	 3482  #4824  4927
+							   3581	 3720  3895  4186  4307	 4356  4539  4561  4668	 4791  #4962
+_END_MSO		Alias  END_MSO			   #4909
+_FP_OFF			Near   ----:---- Extern		   1821	 #4958
+_FP_SEG			Near   ----:---- Extern		   1806	 #4959
+_GETCH			Near   ----:---- Extern		   1255	 #4928
+_GETCURSORPOSITION	Alias  GETCURSORPOSITION	   #4911
+_GET_PCB		Alias  GET_PCB			   #4908
+_GET_SEM_POS		Alias  GET_SEM_POS		   #4904
+_MINISO_COL		Alias  MINISO_COL		   #4926
+_MINISO_CONTEXTSWITCH	Near   _TEXT:0391		   #1076  4906
+_MINISO_COR		Alias  MINISO_COR		   #4925
+_MINISO_DELCURTHREAD	Byte   _BSS:0006		   1107	 1113  1495  2189  2462	 3482  #4813  4916
 _MINISO_FREE		Word   _DATA:0009		   #39	1453  1580  1642  1646	1651  2027  2033  2251	2257  2791  2798  +
-							   3024	 3038  3139  3153  4928
-_MINISO_INIT_PROCTABLE	Near   _TEXT:04D7		   #1361  4968
-_MINISO_INIT_SEMTABLE	Near   _TEXT:04BC		   #1328  1377	4967
-_MINISO_ISKEY		Alias  MINISO_ISKEY		   #4934
-_MINISO_KEY		Alias  MINISO_KEY		   #4933
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 93
+							   3024	 3038  3139  3153  4917
+_MINISO_INIT_PROCTABLE	Near   _TEXT:04D7		   #1361  4957
+_MINISO_INIT_SEMTABLE	Near   _TEXT:04BC		   #1328  1377	4956
+_MINISO_ISKEY		Alias  MINISO_ISKEY		   #4923
+_MINISO_KEY		Alias  MINISO_KEY		   #4922
+_MINISO_NEXTTHREAD	Word   _BSS:0004		   1083	 1093  1099  1157  1190	 1499  2185  2661  2949	 3478  3885  4535 +
+							   #4811  4915
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 93
 Symbol Table
 
 
 
-_MINISO_NEXTTHREAD	Word   _BSS:0004		   1083	 1093  1099  1157  1190	 1499  2185  2661  2949	 3478  3885  4535 +
-							   #4822  4926
-_MINISO_OLDISR		Dword  _BSS:0000		   1209	 1210  1524  1525  #4820  4925
-_MINISO_PAG		Alias  MINISO_PAG		   #4935
+_MINISO_OLDISR		Dword  _BSS:0000		   1209	 1210  1524  1525  #4809  4914
+_MINISO_PAG		Alias  MINISO_PAG		   #4924
 _MINISO_READY		Word   _DATA:0007		   #36	1088  1100  1121  1129	1137  1146  1158  1162	1171  1179  1382  +
 							   1386	 1394  1402  1405  1411	 1414  1420  1428  1436	 1444  1663  1883 +
 							   1905	 1919  2162  2168  2393	 2415  2430  2531  2566	 2715  2847  2851 +
 							   2882	 3103  3127  3158  3189	 3213  3262  3269  3291	 3305  3324  3333 +
 							   3342	 3387  3393  3436  3442	 3452  3460  3468  3511	 3535  3644  3668 +
-							   3679	 3760  4254  4280  4291	 4385  4742  4768  4779	 4929
-_MINISO_RETURN_ADDR	Near   ----:---- Extern		   1793	 #4916
-_MINISO_SCALL_TABLE	Word   _DATA:000B		   #42	175  186  200  213  227	 244  4924
+							   3679	 3760  4254  4280  4291	 4385  4730  4756  4767	 4918
+_MINISO_RETURN_ADDR	Near   ----:---- Extern		   1793	 #4905
+_MINISO_SCALL_TABLE	Word   _DATA:000B		   #42	175  186  200  213  227	 244  4913
 _MINISO_SEM		Word   _BSS:01A7		   1346	 3951  3956  4006  4041	 4049  4058  4065  4072	 4122  4139  4201 +
-							   4208	 4218  4230  4237  4245	 4371  4378  4429  4462	 4604  4620  4689 +
-							   4696	 4706  4718  4725  4733	 #4828	4932
+							   4208	 4218  4230  4237  4245	 4371  4378  4429  4462	 4604  4620  4687 +
+							   4694	 4706  4713  4721  4782	 #4817	4921
 _MINISO_THREAD		Word   _BSS:0007		   1092	 1125  1133  1141  1150	 1166  1175  1183  1291	 1297  1390  1398 +
 							   1407	 1416  1424  1432  1440	 1448  1469  1477  1486	 1490  1650  1659 +
 							   1667	 1674  1815  1830  1838	 1846  1854  1862  1870	 1878  1887  1898 +
@@ -5697,46 +5684,46 @@ _MINISO_THREAD		Word   _BSS:0007		   1092	 1125  1133  1141  1150	 1166  1175  1
 							   3411	 3422  3428  3438  3446	 3456  3464  3473  3515	 3539  3599  3608 +
 							   3621	 3628  3635  3648  3656	 3664  3672  3681  3689	 3698  3705  3713 +
 							   3769	 3781
-_MK_FP			Near   ----:---- Extern		   860	981  1688  2769	 3044  #4971
-_NEXTSEMID		Alias  NEXTSEMID		   #4931
-_PUTCH			Near   ----:---- Extern		   1241	 #4940
-_PUTSTR			Near   ----:---- Extern		   1225	 1233  1249  #4938
-_S@			Alias  S@			   #4975
-_SCALL			Near   _TEXT:0000		   #153	 4918
-_SCROLL			Alias  SCROLL			   #4921
-_SC_CLRSCR		Near   _TEXT:01C0		   54  #649  4964
-_SC_EXIT		Near   _TEXT:0E81		   106	1713  #3086  4951
-_SC_FORK		Near   _TEXT:05D8		   90  #1562  4955
-_SC_GETCH		Near   _TEXT:0170		   50  #555  4965
-_SC_GETCOLOR		Near   _TEXT:01E2		   58  #708  4963
-_SC_GETDATE		Near   _TEXT:0248		   78  #846  4958
-_SC_GETPID		Near   _TEXT:1106		   110	#3504  4950
-_SC_GETPPID		Near   _TEXT:111B		   114	#3528  4949
-_SC_GETTIME		Near   _TEXT:02F8		   82  #968  4957
-_SC_GOTOXY		Near   _TEXT:021A		   74  #798  4959
-_SC_KILL		Near   _TEXT:0834		   94  #1947  4954
-_SC_PUTCH		Near   _TEXT:00DA		   46  #388  4966
-_SC_REBOOT		Near   _TEXT:05B8		   86  1260  #1516  4956
-_SC_SEMBROADCAST	Near   _TEXT:1695		   146	#4638  4941
-_SC_SEMCREATE		Near   _TEXT:1366		   126	#3986  4946
-_SC_SEMDESTROY		Near   _TEXT:165D		   142	#4582  4942
-_SC_SEMDOWN		Near   _TEXT:1517		   138	#4327  4943
-_SC_SEMSET		Near   _TEXT:13F1		   130	#4100  4945
-_SC_SEMUP		Near   _TEXT:142A		   134	#4157  4944
-_SC_SENDSIGNAL		Near   _TEXT:1130		   118	#3552  4948
-Turbo Assembler	 Version 3.1	    11/19/18 20:45:50	    Page 94
+_MK_FP			Near   ----:---- Extern		   860	981  1688  2769	 3044  #4960
+_NEXTSEMID		Alias  NEXTSEMID		   #4920
+_PUTCH			Near   ----:---- Extern		   1241	 #4929
+_PUTSTR			Near   ----:---- Extern		   1225	 1233  1249  #4927
+_S@			Alias  S@			   #4964
+_SCALL			Near   _TEXT:0000		   #153	 4907
+_SCROLL			Alias  SCROLL			   #4910
+_SC_CLRSCR		Near   _TEXT:01C0		   54  #649  4953
+_SC_EXIT		Near   _TEXT:0E81		   106	1713  #3086  4940
+_SC_FORK		Near   _TEXT:05D8		   90  #1562  4944
+_SC_GETCH		Near   _TEXT:0170		   50  #555  4954
+_SC_GETCOLOR		Near   _TEXT:01E2		   58  #708  4952
+_SC_GETDATE		Near   _TEXT:0248		   78  #846  4947
+_SC_GETPID		Near   _TEXT:1106		   110	#3504  4939
+_SC_GETPPID		Near   _TEXT:111B		   114	#3528  4938
+_SC_GETTIME		Near   _TEXT:02F8		   82  #968  4946
+_SC_GOTOXY		Near   _TEXT:021A		   74  #798  4948
+_SC_KILL		Near   _TEXT:0834		   94  #1947  4943
+_SC_PUTCH		Near   _TEXT:00DA		   46  #388  4955
+_SC_REBOOT		Near   _TEXT:05B8		   86  1260  #1516  4945
+_SC_SEMBROADCAST	Near   _TEXT:1695		   146	#4638  4930
+_SC_SEMCREATE		Near   _TEXT:1366		   126	#3986  4935
+_SC_SEMDESTROY		Near   _TEXT:165D		   142	#4582  4931
+_SC_SEMDOWN		Near   _TEXT:1517		   138	#4327  4932
+_SC_SEMSET		Near   _TEXT:13F1		   130	#4100  4934
+_SC_SEMUP		Near   _TEXT:142A		   134	#4157  4933
+_SC_SENDSIGNAL		Near   _TEXT:1130		   118	#3552  4937
+_SC_SETCOLOR		Near   _TEXT:01ED		   62  #729  4951
+_SC_WAIT		Near   _TEXT:0D01		   102	#2830  4942
+Turbo Assembler	 Version 3.1	    11/19/18 21:30:19	    Page 94
 Symbol Table
 
 
 
-_SC_SETCOLOR		Near   _TEXT:01ED		   62  #729  4962
-_SC_WAIT		Near   _TEXT:0D01		   102	#2830  4953
-_SC_WAITPID		Near   _TEXT:0B2E		   98  #2495  4952
-_SC_WAITSIGNAL		Near   _TEXT:1230		   122	#3739  4947
-_SC_WHEREX		Near   _TEXT:01FC		   66  #754  4961
-_SC_WHEREY		Near   _TEXT:0209		   70  #775  4960
-_SETCURSORPOSITION	Alias  SETCURSORPOSITION	   #4923
-_SETVECT		Near   ----:---- Extern		   1213	 1528  #4974
+_SC_WAITPID		Near   _TEXT:0B2E		   98  #2495  4941
+_SC_WAITSIGNAL		Near   _TEXT:1230		   122	#3739  4936
+_SC_WHEREX		Near   _TEXT:01FC		   66  #754  4950
+_SC_WHEREY		Near   _TEXT:0209		   70  #775  4949
+_SETCURSORPOSITION	Alias  SETCURSORPOSITION	   #4912
+_SETVECT		Near   ----:---- Extern		   1213	 1528  #4963
 
 Macro Name						   Cref	(defined at #)
 
@@ -5759,10 +5746,10 @@ DGROUP			Group				   #12	13  175	 186  200  213	227  244  291  317  365	 373  45
 							   2330	 2339  2347  2357  2367	 2380  2393  2397  2408	 2415  2417  2426 +
 							   2430	 2435  2443  2451  2462	 2529  2531  2536  2558	 2566  2574  2583 +
 							   2593	 2606  2614
-  _BSS			16  01F7 Word	Public	BSS	   12  #18  #4819
-  _DATA			16  020E Word	Public	DATA	   12  #14  #22	 #1553	#4833
-_TEXT			16  1796 Byte	Public	CODE	   #10	13  #148  152  279  309	 341  387  554	648  707  728  753  774	  +
+  _BSS			16  01F7 Word	Public	BSS	   12  #18  #4808
+  _DATA			16  020E Word	Public	DATA	   12  #14  #22	 #1553	#4822
+_TEXT			16  1785 Byte	Public	CODE	   #10	13  #148  152  279  309	 341  387  554	648  707  728  753  774	  +
 							   797	845  967  1075	1200  1270  1327  1360	1515  #1557  1561  1946	  +
 							   2494	 2829  3085  3503  3527	 3551  3738  3932  3985	 4099  4156  4326 +
-							   4581	 4637  #4913
+							   4581	 4637  #4902
 

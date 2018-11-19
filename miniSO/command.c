@@ -964,7 +964,7 @@ void create()
   char str[20];
   int ec = exitcode;
 
-  semdown(semid);
+  semdown(broadcast_sem_id);
     
   putstrxy(65,ini+0,"ÚÄÄ Thread ÄÄÄÄ¿");
   putstrxy(65,ini+1,"³ PID  =       ³");
@@ -1012,10 +1012,11 @@ int cmd_create(int argc, char far *argv[])
 	semid_t	semid;
 	char	str[20];
 
-	if	(argc != 2)	{
-		putstr("Erro em semcreate: numero invalido de argumentos!\n");
+	if	(argc != 1)	{
+		putstr("Erro em semcreate: nao e necessario argumentos!\n");
 		return 1;
 	}
+
 	value = 0;
 	semid = semcreate(value);
 	if	(semid==miniSO_ERROR)
@@ -1029,10 +1030,6 @@ int cmd_create(int argc, char far *argv[])
 	putstr(")\n");
 	broadcast_sem_id = semid;
 	  
-	if	(argc != 2)  {
-		putstr("Erro em demo: numero invalido de argumentos!\n");
-		return 1;
-	}
 	demo_linha += 5;
 	if	(demo_linha >21)
 		demo_linha = 1;
@@ -1040,7 +1037,7 @@ int cmd_create(int argc, char far *argv[])
 	
 	for(contador = 1; contador <= 4; contador++) {
 		if	(fork(create)==miniSO_ERROR)  {
-			putstr("Erro em demo: fork() nao conseguiu criar thread!\n");
+			putstr("Erro em create: fork() nao conseguiu criar thread!\n");
 			return 1;
 		}
 	}

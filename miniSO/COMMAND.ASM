@@ -14,7 +14,7 @@ $comm	macro	name,dist,size,count
 	endif
 	?debug	V 300h
 	?debug	S "command.c"
-	?debug	C E9CFA4734D09636F6D6D616E642E63
+	?debug	C E9C1AB734D09636F6D6D616E642E63
 	?debug	C E9EE217847086D696E69534F2E68
 	?debug	C E9D39D734D09636F6D6D616E642E68
 	?debug	C E969A4734D056C69622E68
@@ -4909,9 +4909,9 @@ _create	proc	near
 	mov	word ptr [bp-2],ax
    ;	
    ;	
-   ;	  semdown(semid);
+   ;	  semdown(broadcast_sem_id);
    ;	
-	push	word ptr DGROUP:_semid
+	push	word ptr DGROUP:broadcast_sem_id
 	call	near ptr _semdown
 	pop	cx
    ;	
@@ -5260,12 +5260,12 @@ _cmd_create	proc	near
    ;		semid_t	semid;
    ;		char	str[20];
    ;	
-   ;		if	(argc != 2)	{
+   ;		if	(argc != 1)	{
    ;	
-	cmp	word ptr [bp+4],2
+	cmp	word ptr [bp+4],1
 	je	short @34@170
    ;	
-   ;			putstr("Erro em semcreate: numero invalido de argumentos!\n");
+   ;			putstr("Erro em semcreate: nao e necessario argumentos!\n");
    ;	
 	push	ds
 	mov	ax,offset DGROUP:s@+2865
@@ -5280,10 +5280,11 @@ _cmd_create	proc	near
 @34@114:
 	mov	ax,1
 @34@142:
-	jmp	@34@506
+	jmp	@34@450
 @34@170:
    ;	
    ;		}
+   ;	
    ;		value = 0;
    ;	
 	mov	word ptr [bp-2],0
@@ -5306,7 +5307,7 @@ _cmd_create	proc	near
    ;		putstr("Semaforo id=");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+2916
+	mov	ax,offset DGROUP:s@+2914
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -5333,7 +5334,7 @@ _cmd_create	proc	near
    ;		putstr(" criado (value=");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+2929
+	mov	ax,offset DGROUP:s@+2927
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -5360,7 +5361,7 @@ _cmd_create	proc	near
    ;		putstr(")\n");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+2945
+	mov	ax,offset DGROUP:s@+2943
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -5371,20 +5372,6 @@ _cmd_create	proc	near
 	mov	word ptr DGROUP:broadcast_sem_id,di
    ;	
    ;		  
-   ;		if	(argc != 2)  {
-   ;	
-	cmp	word ptr [bp+4],2
-	je	short @34@282
-   ;	
-   ;			putstr("Erro em demo: numero invalido de argumentos!\n");
-   ;	
-	push	ds
-	mov	ax,offset DGROUP:s@+2948
-	jmp	@34@86
-@34@282:
-   ;	
-   ;			return 1;
-   ;		}
    ;		demo_linha += 5;
    ;	
 	add	word ptr DGROUP:demo_linha,5
@@ -5392,12 +5379,12 @@ _cmd_create	proc	near
    ;		if	(demo_linha >21)
    ;	
 	cmp	word ptr DGROUP:demo_linha,21
-	jle	short @34@338
+	jle	short @34@282
    ;	
    ;			demo_linha = 1;
    ;	
 	mov	word ptr DGROUP:demo_linha,1
-@34@338:
+@34@282:
    ;	
    ;		exitcode = atoi(argv[1]);
    ;	
@@ -5413,8 +5400,8 @@ _cmd_create	proc	near
    ;		for(contador = 1; contador <= 4; contador++) {
    ;	
 	mov	si,1
-	jmp	short @34@450
-@34@366:
+	jmp	short @34@394
+@34@310:
    ;	
    ;			if	(fork(create)==miniSO_ERROR)  {
    ;	
@@ -5423,18 +5410,18 @@ _cmd_create	proc	near
 	call	near ptr _fork
 	pop	cx
 	cmp	ax,-1
-	jne	short @34@422
+	jne	short @34@366
    ;	
-   ;				putstr("Erro em demo: fork() nao conseguiu criar thread!\n");
+   ;				putstr("Erro em create: fork() nao conseguiu criar thread!\n");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+2994
+	mov	ax,offset DGROUP:s@+2946
 	jmp	@34@86
-@34@422:
+@34@366:
 	inc	si
-@34@450:
+@34@394:
 	cmp	si,4
-	jle	short @34@366
+	jle	short @34@310
    ;	
    ;				return 1;
    ;			}
@@ -5444,7 +5431,7 @@ _cmd_create	proc	near
    ;	
 	xor	ax,ax
 	jmp	@34@142
-@34@506:
+@34@450:
    ;	
    ;	}
    ;	
@@ -5474,7 +5461,7 @@ _cmd_start	proc	near
    ;			putstr("Erro em semtest: numero invalido de argumentos!\n");
    ;	
 	push	ds
-	mov	ax,offset DGROUP:s@+3044
+	mov	ax,offset DGROUP:s@+2998
 	push	ax
 	call	near ptr _putstr
 	pop	cx
@@ -6050,7 +6037,7 @@ s@	label	byte
 	db	-60
 	db	-39
 	db	0
-	db	'Erro em semcreate: numero invalido de argumentos!'
+	db	'Erro em semcreate: nao e necessario argumentos!'
 	db	10
 	db	0
 	db	'Semaforo id='
@@ -6060,10 +6047,7 @@ s@	label	byte
 	db	')'
 	db	10
 	db	0
-	db	'Erro em demo: numero invalido de argumentos!'
-	db	10
-	db	0
-	db	'Erro em demo: fork() nao conseguiu criar thread!'
+	db	'Erro em create: fork() nao conseguiu criar thread!'
 	db	10
 	db	0
 	db	'Erro em semtest: numero invalido de argumentos!'
